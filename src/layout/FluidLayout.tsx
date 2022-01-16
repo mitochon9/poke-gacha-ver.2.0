@@ -12,7 +12,7 @@ export const FluidLayout: CustomLayout = (page) => (
     <header>
       <Header />
     </header>
-    <main className="flex-1 bg-red-300">
+    <main className="flex-1">
       <LayoutErrorBoundary>{page}</LayoutErrorBoundary>
     </main>
     <footer>
