@@ -13,27 +13,27 @@ export const ShowPokemon = ({ pokemonId }: Props) => {
 
   if (isLoading01 || isLoading02) {
     return (
-      <div className="flex justify-center items-center w-60 h-60">
+      <div className="flex justify-center items-center w-auto h-60 md:h-80">
         <Image src="/monsterBall.png" alt="モンスターボール" width={60} height={60} />
       </div>
     );
   }
 
   if (error01 || error02) {
-    return <div className="w-60 h-60">{error01.message}</div>;
+    return <div className="w-auto h-60 md:h-80">{error01.message}</div>;
   }
 
   return (
-    <div className="grid items-end pb-4 w-auto h-60">
+    <div className="grid items-end pb-4 w-auto h-60 md:h-80">
       <div className="col-span-3 text-center">
         <div>{pokemonId ? <Image src={pokeImg} alt="ポケモン" width={160} height={160} /> : null}</div>
-        <div className="-mt-4 text-xs">No.{data01?.id}</div>
+        <div className="-mt-4 text-xs md:text-base">No.{data01?.id}</div>
       </div>
-      <div className="col-span-4 text-xs leading-loose text-left">
+      <div className="col-span-4 text-xs leading-loose text-left md:text-base">
         <div>{data02?.names[0]?.name}</div>
-        <div>{data02?.genera[0]?.genus}</div>
-        <div>たかさ {(data01?.height / 10).toFixed(1)}m</div>
-        <div>おもさ {(data01?.weight / 10).toFixed(1)}kg</div>
+        <div className="md:mt-2">{data02?.genera[0]?.genus}</div>
+        <div className="md:mt-2">たかさ {(data01?.height / 10).toFixed(1)}m</div>
+        <div className="md:mt-2">おもさ {(data01?.weight / 10).toFixed(1)}kg</div>
       </div>
       <div className="relative col-span-7 mt-2 w-full border-2 border-gray-700">
         <div className="flex absolute -top-2 col-span-7 justify-around w-full">
@@ -44,7 +44,9 @@ export const ShowPokemon = ({ pokemonId }: Props) => {
           ))}
         </div>
       </div>
-      <div className="col-span-7 px-2 mt-2 text-xs text-left">{data02?.flavor_text_entries[38].flavor_text}</div>
+      <div className="col-span-7 px-2 mt-2 text-xs text-left md:text-base">
+        {data02?.flavor_text_entries[38].flavor_text}
+      </div>
     </div>
   );
 };

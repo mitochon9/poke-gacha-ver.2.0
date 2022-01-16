@@ -26,19 +26,19 @@ export const Index: VFC = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="relative">
       {/* 画面部分 */}
-      <div className="relative mx-2 mt-2 text-center bg-amber-50 rounded-2xl border-x-[56px] border-t-[36px] border-b-[56px] border-gray-700 pokemon-font">
+      <div className="relative mx-2 mt-2 text-center bg-amber-50 rounded-2xl border-x-[56px] border-t-[36px] border-b-[56px] border-gray-700 md:mx-8 md:mt-4 pokemon-font">
         {isAnimation ? (
-          <div className="flex justify-center items-center w-auto h-60">
+          <div className="flex justify-center items-center w-auto h-60 md:h-80">
             <Image src="/monsterBall.png" alt="モンスターボール" width={60} height={60} className="ball-animation" />
           </div>
         ) : !isOpen ? (
-          <div className="relative pt-4 w-auto h-60">
+          <div className="relative pt-4 w-auto h-60 md:h-80">
             <h1 className="text-2xl font-extrabold text-center scale-y-125">ポケットモンスター</h1>
             <h2 className="mt-4 text-sm font-bold text-center">POCKET MONSTERS</h2>
             <h3 className="mt-2 text-xs font-bold text-center flash">Red Version</h3>
-            <div>
+            <div className="md:mt-8">
               <Image src={hero} alt="メインビジュアル" width={120} height={120} />
             </div>
             <small className="absolute bottom-0 left-1/2 w-full text-[8px] text-center -translate-x-1/2">
@@ -53,7 +53,7 @@ export const Index: VFC = () => {
       </div>
 
       {/* 電源部分 */}
-      <div className="absolute top-28 left-[18px] text-[6px] text-gray-400">
+      <div className="absolute top-28 left-[18px] text-[6px] text-gray-400 md:left-11">
         <div className="flex items-center">
           <div className="w-2 h-2 bg-red-500 rounded-full"></div>
           <div className="-ml-2 w-4 h-4 rounded-full border-2 border-y-transparent border-r-gray-400 border-l-transparent"></div>

@@ -6,8 +6,9 @@
 @font-face {
   font-family: "pokemon-font";
   src: url("../fonts/pokemon-font.eot");
-  src: url("../fonts/pokemon-font.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/pokemon-font.woff2") format("woff2"), url("../fonts/pokemon-font.woff") format("woff");
+  src: url("../fonts/pokemon-font.eot?#iefix") format("embedded-opentype");
+  src: url("../fonts/pokemon-font.woff2") format("woff2");
+  src: url("../fonts/pokemon-font.woff") format("woff");
 }
 
 .pokemon-font {
