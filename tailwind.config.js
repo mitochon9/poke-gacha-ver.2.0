@@ -4,6 +4,7 @@ module.exports = {
     extend: {
       fontFamily: {
         karam: ["Kalam"],
+        dot: ["DotGothic16, sans-serif"],
       },
     },
   },
