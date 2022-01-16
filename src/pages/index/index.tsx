@@ -1,5 +1,4 @@
 import Image from "next/image";
-import hero from "public/hitokage.png";
 import type { VFC } from "react";
 import { useCallback, useState } from "react";
 import { ShowPokemon } from "src/pages/ShowPokemon";
@@ -28,7 +27,7 @@ export const Index: VFC = () => {
   return (
     <div className="relative">
       {/* 画面部分 */}
-      <div className="relative mx-2 mt-2 font-dot text-center bg-amber-50 rounded-2xl border-x-[56px] border-t-[36px] border-b-[56px] border-gray-700 md:mx-8 md:mt-4">
+      <div className="relative mx-2 mt-4 font-dot text-center bg-amber-50 rounded-2xl border-x-[56px] border-t-[36px] border-b-[56px] border-gray-700 md:mx-8 md:mt-8">
         {isAnimation ? (
           <div className="flex justify-center items-center w-auto h-60 md:h-80">
             <Image src="/monsterBall.png" alt="モンスターボール" width={60} height={60} className="ball-animation" />
@@ -36,10 +35,15 @@ export const Index: VFC = () => {
         ) : !isOpen ? (
           <div className="relative pt-4 w-auto h-60 md:h-80">
             <h1 className="text-2xl font-extrabold text-center scale-y-125">ポケットモンスター</h1>
-            <h2 className="mt-4 text-sm font-bold text-center">POCKET MONSTERS</h2>
+            <h2 className="mt-4 text-sm font-bold tracking-widest text-center">POCKET MONSTERS</h2>
             <h3 className="mt-2 text-xs font-bold text-center flash">Red Version</h3>
-            <div className="md:mt-8">
-              <Image src={hero} alt="メインビジュアル" width={120} height={120} />
+            <div className="flex justify-center items-end md:mt-8">
+              <div className="-mr-5">
+                <Image src="/red.png" alt="メインビジュアル" width={120} height={120} />
+              </div>
+              <div className="-mb-2 -ml-5">
+                <Image src="/hitokage.png" alt="メインビジュアル" width={100} height={100} />
+              </div>
             </div>
             <small className="absolute bottom-0 left-1/2 w-full text-[8px] text-center -translate-x-1/2">
               ©1995 GAME FREAK Inc.

@@ -8,7 +8,7 @@ import { LayoutErrorBoundary } from "./LayoutErrorBoundary";
  * @package
  */
 export const FixedLayout: CustomLayout = (page) => (
-  <div className="flex flex-col mx-auto max-w-lg min-h-[800px] bg-yellow-200 rounded-xl rounded-b-3xl shadow">
+  <div className="flex flex-col mx-auto max-w-lg min-h-[667px] bg-yellow-200 rounded-xl rounded-b-3xl shadow md:min-h-[800px]">
     <header>
       <Header />
     </header>

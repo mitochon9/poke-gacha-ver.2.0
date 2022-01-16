@@ -10,7 +10,6 @@ class MyDocument extends Document {
     return (
       <Html lang="ja">
         <Head>
-          <title>ポケガチャ！</title>
           <link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-touch-icon.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
           <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
