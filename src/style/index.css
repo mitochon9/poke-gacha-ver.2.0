@@ -1,3 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "pokemon-font";
+  src: url("../fonts/pokemon-font.eot");
+  src: url("../fonts/pokemon-font.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/pokemon-font.woff2") format("woff2"), url("../fonts/pokemon-font.woff") format("woff");
+}
+
+.pokemon-font {
+  font-family: "pokemon-font", monospace;
+}
+
+.flash {
+  animation: flash 2s linear infinite;
+}
+
+@keyframes flash {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.ball-animation {
+  animation: shake 2s linear;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(-30deg);
+  }
+  10% {
+    transform: rotate(30deg);
+  }
+  20% {
+    transform: rotate(-30deg);
+  }
+  30% {
+    transform: rotate(-30deg);
+  }
+  40% {
+    transform: rotate(30deg);
+  }
+  50% {
+    transform: rotate(-30deg);
+  }
+  60% {
+    transform: rotate(-30deg);
+  }
+  65% {
+    transform: rotate(0deg);
+  }
+  70% {
+    transform: rotate(30deg);
+  }
+  75% {
+    transform: rotate(-30deg);
+  }
+  80% {
+    transform: rotate(-30deg);
+  }
+  100% {
+    transform: rotate(-30deg);
+  }
+}

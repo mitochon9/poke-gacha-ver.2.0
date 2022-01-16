@@ -1,9 +1,9 @@
 import type { CustomNextPage } from "next";
-import { FluidLayout } from "src/layout";
+import { FixedLayout } from "src/layout";
 import { Index } from "src/pages/index";
 
 const IndexPage: CustomNextPage = () => <Index />;
 
-IndexPage.getLayout = FluidLayout;
+IndexPage.getLayout = FixedLayout;
 
 export default IndexPage;

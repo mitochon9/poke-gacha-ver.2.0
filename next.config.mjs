@@ -2,6 +2,9 @@
  * @type {import('next').NextConfig}
  **/
 const nextConfig = {
+  images: {
+    domains: ["raw.githubusercontent.com"],
+  },
   i18n: { locales: ["ja"], defaultLocale: "ja" },
   future: { strictPostcssConfiguration: true },
   reactStrictMode: true,
