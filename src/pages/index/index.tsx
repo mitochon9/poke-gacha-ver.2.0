@@ -1,12 +1,13 @@
 import type { VFC } from "react";
-import { useCallback, useEffect, useState } from "react";
-import { useCookies } from "react-cookie";
-import { useSetRecoilState } from "recoil";
+import { useCallback } from "react";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { isAnimationState } from "src/component/state/isAnimationAtom";
 import { isOpenResultState } from "src/component/state/isOpenAtom";
+import { isShowPictureBookState } from "src/component/state/isShowPictureBookAtom";
+import { pokemonIdState } from "src/component/state/pokemonIdAtom";
 import { AB_button } from "src/pages/index/AB_button";
 import { CrossKey } from "src/pages/index/CrossKey";
-import { Display } from "src/pages/index/Display";
+import { Display } from "src/pages/index/display";
 import { DisplayLogo } from "src/pages/index/DisplayLogo";
 import { NintendoLogo } from "src/pages/index/NintendoLogo";
 import { PowerSupply } from "src/pages/index/PowerSupply";
@@ -16,41 +17,50 @@ import { StartSelect_Button } from "src/pages/index/StartSelect_Button";
 export const Index: VFC = () => {
   const setIsOpenResult = useSetRecoilState(isOpenResultState);
   const setIsAnimation = useSetRecoilState(isAnimationState);
+  const [isPictureBook, setIsPictureBook] = useRecoilState(isShowPictureBookState);
 
-  const [cookies, setCookie] = useCookies(["pokemonId"]);
+  const setPokemonId = useSetRecoilState<number>(pokemonIdState);
 
-  const [pokemonId, setPokemonId] = useState<number[]>(cookies.pokemonId);
-
-  const closeModal = () => {
+  const backButton = () => {
     setIsOpenResult(false);
+    setIsPictureBook(false);
   };
-
   const handleLotteryNumber = useCallback(
     (min: number, max: number) => {
-      setIsAnimation(true);
-      const lotteryNumber = Math.floor(Math.random() * (max - min) + min);
-      const timer = setTimeout(() => {
-        setIsAnimation(false);
-        setIsOpenResult(true);
-        setPokemonId([...pokemonId, lotteryNumber]);
-      }, 2000);
-      return () => clearTimeout(timer);
-    },
-    [pokemonId, setIsAnimation, setIsOpenResult, setPokemonId]
-  );
+      try {
+        if (isPictureBook) {
+          return;
+        }
 
-  useEffect(() => {
-    setCookie("pokemonId", pokemonId);
-  }, [pokemonId, setCookie]);
+        setIsAnimation(true);
+
+        const lotteryNumber = Math.floor(Math.random() * (max - min) + min);
+
+        setPokemonId(lotteryNumber);
+
+        const timer = setTimeout(() => {
+          setIsAnimation(false);
+          setIsOpenResult(true);
+        }, 2000);
+        return () => clearTimeout(timer);
+      } catch {
+      } finally {
+      }
+    },
+    [setPokemonId, setIsAnimation, setIsOpenResult, isPictureBook]
+  );
 
   return (
     <div className="relative">
       {/* 画面部分 */}
-      <Display pokemonId={pokemonId} />
+      <Display />
+
       {/* 電源部分 */}
       <PowerSupply />
+
       {/* 画面下のロゴ */}
       <DisplayLogo />
+
       {/* Nintendo logo */}
       <NintendoLogo />
       <div className="flex justify-between items-center mx-8 mt-8">
@@ -60,12 +70,12 @@ export const Index: VFC = () => {
         <div className="col-span-2"></div>
 
         {/* A B button */}
-        <AB_button closeModal={closeModal} handleLotteryNumber={handleLotteryNumber} />
+        <AB_button backButton={backButton} handleLotteryNumber={handleLotteryNumber} />
       </div>
 
       {/* start select button */}
       <div className="relative">
-        <StartSelect_Button closeModal={closeModal} handleLotteryNumber={handleLotteryNumber} />
+        <StartSelect_Button backButton={backButton} handleLotteryNumber={handleLotteryNumber} />
 
         {/* speaker */}
         <Speaker />

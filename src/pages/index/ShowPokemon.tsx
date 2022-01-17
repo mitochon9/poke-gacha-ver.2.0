@@ -1,35 +1,72 @@
 import Image from "next/image";
+import { useCallback, useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
+import { useRecoilValue } from "recoil";
 import { usePokeApi01, usePokeApi02 } from "src/component/hooks/usePokeApi";
+import { pokemonIdState } from "src/component/state/pokemonIdAtom";
+import type { PokemonData } from "src/type/pokemonData";
 
-type Props = {
-  pokemonId: number[] | undefined;
-};
+export const ShowPokemon = () => {
+  const [cookies, setCookies] = useCookies(["pokemonData"]);
+  const pokemonId = useRecoilValue(pokemonIdState);
 
-export const ShowPokemon = ({ pokemonId }: Props) => {
-  const { data: data01, error: error01, isLoading: isLoading01 }: any = usePokeApi01(pokemonId?.slice(-1)[0]);
-  const { data: data02, error: error02, isLoading: isLoading02 }: any = usePokeApi02(pokemonId?.slice(-1)[0]);
+  const [pokemonData, setPokemonData] = useState(cookies.pokemonData ? cookies.pokemonData : []);
 
-  const pokeImg = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-    pokemonId?.slice(-1)[0]
-  }.png`;
+  const { data: data01, error: error01, isLoading: isLoading01 }: any = usePokeApi01(pokemonId);
+  const { data: data02, error: error02, isLoading: isLoading02 }: any = usePokeApi02(pokemonId);
 
-  if (isLoading01 || isLoading02) {
+  const pokeImg = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`;
+
+  const isLoading = isLoading01 || isLoading02;
+  const isError = error01 || error02;
+
+  const setFields = useCallback(() => {
+    if (data01 && data02 && pokemonId) {
+      setPokemonData((pokemonData: PokemonData) => [
+        ...pokemonData,
+        {
+          id: data01?.id,
+          name: data02?.names[0]?.name,
+          genus: data02?.genera[0]?.genus,
+          height: data01?.height,
+          weight: data01?.weight,
+          flavorText: data02?.flavor_text_entries[38]?.flavor_text,
+          img: `https:raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`,
+        },
+      ]);
+    }
+  }, [data01, data02, setPokemonData, pokemonId]);
+
+  useEffect(() => {
+    setFields();
+  }, [setFields]);
+
+  useEffect(() => {
+    if (data01 && data02 && pokemonId) {
+      setCookies("pokemonData", pokemonData);
+    }
+  }, [pokemonData, setCookies, data01, data02, pokemonId]);
+
+  if (isLoading) {
     return (
       <div className="flex justify-center items-center w-auto h-60 md:h-80">
-        <Image src="/monsterBall.png" alt="モンスターボール" width={60} height={60} />
+        <Image src="/monsterBall.png" alt="モンスターボール" width={60} height={60} className="rotate-[-30deg]" />
       </div>
     );
   }
 
-  if (error01 || error02) {
-    return <div className="w-auto h-60 md:h-80">{error01.message}</div>;
+  if (isError) {
+    return <div className="w-auto h-60 md:h-80">データの取得に失敗しました</div>;
   }
 
   return (
     <div className="grid items-end pb-4 w-auto h-60 md:h-80">
       <div className="col-span-3 text-center">
         <div>{pokemonId ? <Image src={pokeImg} alt="ポケモン" width={160} height={160} /> : null}</div>
-        <div className="-mt-4 text-xs md:text-base">No.{data01?.id}</div>
+        <div className="-mt-4 text-xs md:text-base">
+          No.
+          {pokemonId ? pokemonId : null}
+        </div>
       </div>
       <div className="col-span-4 text-xs leading-loose text-left md:text-base">
         <div>{data02?.names[0]?.name}</div>
@@ -47,7 +84,7 @@ export const ShowPokemon = ({ pokemonId }: Props) => {
         </div>
       </div>
       <div className="col-span-7 px-2 mt-2 text-xs text-left md:text-base">
-        {data02?.flavor_text_entries[38].flavor_text}
+        {data02?.flavor_text_entries[38]?.flavor_text}
       </div>
     </div>
   );

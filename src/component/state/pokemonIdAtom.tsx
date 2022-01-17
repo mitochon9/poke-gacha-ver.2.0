@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-export const pokemonIdState = atom<number[]>({
+export const pokemonIdState = atom<number>({
   key: "pokemonIdState",
-  default: [],
+  default: 0,
 });

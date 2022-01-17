@@ -1,18 +1,24 @@
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { isAnimationState } from "src/component/state/isAnimationAtom";
+import { isShowPictureBookState } from "src/component/state/isShowPictureBookAtom";
 
 type Props = {
-  closeModal: VoidFunction;
-  handleLotteryNumber: (min: number, max: number) => () => void;
+  backButton: VoidFunction;
+  handleLotteryNumber: (min: number, max: number) => (() => void) | undefined;
 };
 
 export const StartSelect_Button = ({ handleLotteryNumber }: Props) => {
   const isAnimation = useRecoilValue(isAnimationState);
+  const setIsShowPictureBook = useSetRecoilState(isShowPictureBookState);
 
   return (
     <div>
       <div className="flex gap-x-6 justify-center mt-16">
-        <div className="w-12 h-4 bg-gray-600 rounded-full shadow-sm active:shadow-none shadow-black cursor-pointer"></div>
+        <button
+          type="button"
+          onClick={() => setIsShowPictureBook(true)}
+          className="w-12 h-4 bg-gray-600 rounded-full shadow-sm active:shadow-none shadow-black cursor-pointer"
+        ></button>
         <button
           type="button"
           disabled={isAnimation}
