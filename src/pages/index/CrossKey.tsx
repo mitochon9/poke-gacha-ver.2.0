@@ -10,20 +10,20 @@ export const CrossKey = () => (
                 : index === 2
                 ? "bg-transparent"
                 : index === 1
-                ? "bg-gray-700 border text-gray-600 border-gray-700 flex justify-center items-center text-2xl shadow-sm active:shadow-none hover:cursor-pointer shadow-black"
+                ? "bg-gray-800 border text-gray-700 border-gray-800 flex justify-center items-center text-2xl shadow-sm active:shadow-none hover:cursor-pointer shadow-black"
                 : index === 3
-                ? "bg-gray-700 border text-gray-600 border-gray-700 flex justify-center items-center text-2xl shadow-sm active:shadow-none hover:cursor-pointer shadow-black"
+                ? "bg-gray-800 border text-gray-700 border-gray-800 flex justify-center items-center text-2xl shadow-sm active:shadow-none hover:cursor-pointer shadow-black"
                 : index === 4
-                ? "bg-gray-700 border text-gray-600 border-gray-700 flex justify-center items-center text-3xl"
+                ? "bg-gray-800 border text-gray-700 border-gray-800 flex justify-center items-center text-3xl"
                 : index === 5
-                ? "bg-gray-700 border text-gray-600 border-gray-700 flex justify-center items-center text-2xl shadow-sm active:shadow-none hover:cursor-pointer shadow-black"
+                ? "bg-gray-800 border text-gray-700 border-gray-800 flex justify-center items-center text-2xl shadow-sm active:shadow-none hover:cursor-pointer shadow-black"
                 : index === 6
                 ? "bg-transparent"
                 : index === 7
-                ? "bg-gray-700 border text-gray-600 border-gray-700 flex justify-center items-center text-2xl shadow-sm active:shadow-none hover:cursor-pointer shadow-black"
+                ? "bg-gray-800 border text-gray-700 border-gray-800 flex justify-center items-center text-2xl shadow-sm active:shadow-none hover:cursor-pointer shadow-black"
                 : index === 8
                 ? "bg-transparent"
-                : "bg-gray-700 border border-gray-700"
+                : "bg-gray-800 border border-gray-800"
             }
             `}
       >
