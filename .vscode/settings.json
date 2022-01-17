@@ -11,5 +11,5 @@
   "files.eol": "\n",
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "typescript.tsdk": "node_modules/typescript/lib",
-  "cSpell.words": ["Compat", "hitokage", "karam"]
+  "cSpell.words": ["Compat", "headlessui", "hitokage", "karam"]
 }

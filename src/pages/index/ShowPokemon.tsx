@@ -1,16 +1,18 @@
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
-import { useCookies } from "react-cookie";
 import { useRecoilValue } from "recoil";
 import { usePokeApi01, usePokeApi02 } from "src/component/hooks/usePokeApi";
 import { pokemonIdState } from "src/component/state/pokemonIdAtom";
 import type { PokemonData } from "src/type/pokemonData";
 
 export const ShowPokemon = () => {
-  const [cookies, setCookies] = useCookies(["pokemonData"]);
+  const storageData = localStorage.getItem("storageData");
+
+  const parsedStorageData = storageData ? JSON.parse(storageData) : [];
+
   const pokemonId = useRecoilValue(pokemonIdState);
 
-  const [pokemonData, setPokemonData] = useState(cookies.pokemonData ? cookies.pokemonData : []);
+  const [pokemonData, setPokemonData] = useState(parsedStorageData ? parsedStorageData : []);
 
   const { data: data01, error: error01, isLoading: isLoading01 }: any = usePokeApi01(pokemonId);
   const { data: data02, error: error02, isLoading: isLoading02 }: any = usePokeApi02(pokemonId);
@@ -43,9 +45,9 @@ export const ShowPokemon = () => {
 
   useEffect(() => {
     if (data01 && data02 && pokemonId) {
-      setCookies("pokemonData", pokemonData);
+      localStorage.setItem("storageData", JSON.stringify(pokemonData));
     }
-  }, [pokemonData, setCookies, data01, data02, pokemonId]);
+  }, [pokemonData, data01, data02, pokemonId]);
 
   if (isLoading) {
     return (
