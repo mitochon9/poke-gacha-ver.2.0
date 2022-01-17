@@ -6,7 +6,7 @@ export const TopDisplay = () => (
     <h1 className="text-2xl font-extrabold text-center scale-y-125">ポケットモンスター</h1>
     <h2 className="mt-1 text-sm font-bold tracking-widest text-center">POCKET MONSTERS</h2>
     <h3 className="mt-1 text-xs font-bold text-center">Red Version</h3>
-    <p className="text-xs flash">Press start or A button</p>
+    <p className="text-xs flash">Press START or A button</p>
     <p className="text-[8px]">セレクトボタンでモンスター図鑑へ</p>
     <div className="flex justify-center items-end md:mt-8">
       <div className="-mr-4">
