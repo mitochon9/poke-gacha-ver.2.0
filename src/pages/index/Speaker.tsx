@@ -1,5 +1,5 @@
 export const Speaker = () => (
-  <div className="absolute right-3 -bottom-10 -rotate-12">
+  <div className="absolute right-3 -bottom-8 -rotate-12">
     <div className="grid grid-cols-8 grid-rows-[8] gap-[2px] w-20 h-20">
       {volumeHole.map((item, index) => (
         <div
