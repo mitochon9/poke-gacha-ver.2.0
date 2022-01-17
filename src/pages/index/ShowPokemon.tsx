@@ -76,10 +76,13 @@ export const ShowPokemon = () => {
         <div className="md:mt-2">たかさ {(data01?.height / 10).toFixed(1)}m</div>
         <div className="md:mt-2">おもさ {(data01?.weight / 10).toFixed(1)}kg</div>
       </div>
-      <div className="relative col-span-7 mt-2 w-full border-2 border-gray-700">
-        <div className="flex absolute -top-2 col-span-7 justify-around w-full">
+      <div className="relative col-span-7 mt-2 w-full border-2 border-gray-600">
+        <div className="flex absolute top-[-7px] col-span-7 justify-around w-full">
           {["", "", "", "", "", "", "", "", ""].map((item, index) => (
-            <div key={index} className={`z-10 w-4 h-4  ${index === 4 ? "" : "bg-white border border-gray-700"} `}>
+            <div
+              key={index}
+              className={`z-10 w-[14px] h-[14px]  ${index === 4 ? "" : "bg-amber-50 border border-gray-700"} `}
+            >
               {item}
             </div>
           ))}

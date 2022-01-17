@@ -17,13 +17,13 @@ export const StartSelect_Button = ({ handleLotteryNumber }: Props) => {
         <button
           type="button"
           onClick={() => setIsShowPictureBook(true)}
-          className="w-12 h-4 bg-gray-800 rounded-full shadow-sm active:shadow-none shadow-black cursor-pointer"
+          className="w-12 h-5 bg-gray-800 rounded-full shadow-sm active:shadow-none shadow-black cursor-pointer"
         ></button>
         <button
           type="button"
           disabled={isAnimation}
           onClick={() => handleLotteryNumber(1, 151)}
-          className="w-12 h-4 bg-gray-800 rounded-full shadow-sm active:shadow-none shadow-black cursor-pointer"
+          className="w-12 h-5 bg-gray-800 rounded-full shadow-sm active:shadow-none shadow-black cursor-pointer"
         ></button>
       </div>
       <div className="flex gap-x-8 justify-center mt-1 text-xs text-gray-500">
