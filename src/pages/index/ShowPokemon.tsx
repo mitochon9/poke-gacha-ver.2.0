@@ -33,11 +33,11 @@ export const ShowPokemon = () => {
           height: data01?.height,
           weight: data01?.weight,
           flavorText: data02?.flavor_text_entries[38]?.flavor_text,
-          img: `https:raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`,
+          img: pokeImg,
         },
       ]);
     }
-  }, [data01, data02, setPokemonData, pokemonId]);
+  }, [data01, data02, setPokemonData, pokemonId, pokeImg]);
 
   useEffect(() => {
     setFields();
