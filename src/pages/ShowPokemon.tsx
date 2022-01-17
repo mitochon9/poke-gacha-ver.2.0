@@ -2,14 +2,16 @@ import Image from "next/image";
 import { usePokeApi01, usePokeApi02 } from "src/component/hooks/usePokeApi";
 
 type Props = {
-  pokemonId: number | undefined;
+  pokemonId: number[] | undefined;
 };
 
 export const ShowPokemon = ({ pokemonId }: Props) => {
-  const { data: data01, error: error01, isLoading: isLoading01 }: any = usePokeApi01(pokemonId);
-  const { data: data02, error: error02, isLoading: isLoading02 }: any = usePokeApi02(pokemonId);
+  const { data: data01, error: error01, isLoading: isLoading01 }: any = usePokeApi01(pokemonId?.slice(-1)[0]);
+  const { data: data02, error: error02, isLoading: isLoading02 }: any = usePokeApi02(pokemonId?.slice(-1)[0]);
 
-  const pokeImg = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`;
+  const pokeImg = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+    pokemonId?.slice(-1)[0]
+  }.png`;
 
   if (isLoading01 || isLoading02) {
     return (

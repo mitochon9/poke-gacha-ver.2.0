@@ -1,28 +1,39 @@
 import Image from "next/image";
 import type { VFC } from "react";
+import { useEffect } from "react";
 import { useCallback, useState } from "react";
+import { useCookies } from "react-cookie";
 import { ShowPokemon } from "src/pages/ShowPokemon";
 
 export const Index: VFC = () => {
-  const [pokemonId, setPokemonId] = useState<number>();
-
   const [isOpen, setIsOpen] = useState(false);
   const [isAnimation, setIsAnimation] = useState(false);
+
+  const [cookies, setCookie] = useCookies(["pokemonId"]);
+
+  const [pokemonId, setPokemonId] = useState<number[]>(cookies.pokemonId);
 
   const closeModal = () => {
     setIsOpen(false);
   };
 
-  const handleLotteryNumber = useCallback((min: number, max: number) => {
-    setIsAnimation(true);
-    const lotteryNumber = Math.floor(Math.random() * (max - min) + min);
-    setPokemonId(() => lotteryNumber);
-    const timer = setTimeout(() => {
-      setIsAnimation(false);
-      setIsOpen(true);
-    }, 2000);
-    return () => clearTimeout(timer);
-  }, []);
+  const handleLotteryNumber = useCallback(
+    (min: number, max: number) => {
+      setIsAnimation(true);
+      const lotteryNumber = Math.floor(Math.random() * (max - min) + min);
+      const timer = setTimeout(() => {
+        setIsAnimation(false);
+        setIsOpen(true);
+        setPokemonId(() => [...pokemonId, lotteryNumber]);
+      }, 2000);
+      return () => clearTimeout(timer);
+    },
+    [pokemonId]
+  );
+
+  useEffect(() => {
+    setCookie("pokemonId", pokemonId);
+  }, [pokemonId, setCookie]);
 
   return (
     <div className="relative">
