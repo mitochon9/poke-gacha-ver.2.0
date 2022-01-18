@@ -2,7 +2,9 @@ import type { VFC } from "react";
 import { useCallback } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { isAnimationState } from "src/component/state/isAnimationAtom";
-import { isOpenResultState } from "src/component/state/isOpenAtom";
+import { isDeleteNotifyState } from "src/component/state/isDeleteNotifyAtom";
+import { isDeleteOpenState } from "src/component/state/isDeleteOpenAtom";
+import { isOpenResultState } from "src/component/state/isOpenResultAtom";
 import { isShowPictureBookState } from "src/component/state/isShowPictureBookAtom";
 import { pokemonIdState } from "src/component/state/pokemonIdAtom";
 import { AB_button } from "src/pages/index/AB_button";
@@ -19,16 +21,32 @@ export const Index: VFC = () => {
   const setIsAnimation = useSetRecoilState(isAnimationState);
   const [isPictureBook, setIsPictureBook] = useRecoilState(isShowPictureBookState);
 
+  const [isDeleteOpen, setIsDeleteOpen] = useRecoilState(isDeleteOpenState);
+  const [isDeleteNotify, setIsDeleteNotify] = useRecoilState(isDeleteNotifyState);
+
   const setPokemonId = useSetRecoilState<number>(pokemonIdState);
 
   const backButton = () => {
     setIsOpenResult(false);
     setIsPictureBook(false);
+    setIsDeleteOpen(false);
   };
   const handleLotteryNumber = useCallback(
     (min: number, max: number) => {
       try {
         if (isPictureBook) {
+          return;
+        }
+
+        if (isDeleteOpen) {
+          localStorage.clear();
+          setIsDeleteOpen(false);
+          setIsDeleteNotify(true);
+          return;
+        }
+
+        if (isDeleteNotify) {
+          setIsDeleteNotify(false);
           return;
         }
 
@@ -47,7 +65,16 @@ export const Index: VFC = () => {
       } finally {
       }
     },
-    [setPokemonId, setIsAnimation, setIsOpenResult, isPictureBook]
+    [
+      setPokemonId,
+      setIsAnimation,
+      setIsOpenResult,
+      isPictureBook,
+      isDeleteNotify,
+      isDeleteOpen,
+      setIsDeleteNotify,
+      setIsDeleteOpen,
+    ]
   );
 
   return (
@@ -75,7 +102,7 @@ export const Index: VFC = () => {
 
       {/* start select button */}
       <div className="relative">
-        <StartSelect_Button backButton={backButton} handleLotteryNumber={handleLotteryNumber} />
+        <StartSelect_Button />
 
         {/* speaker */}
         <Speaker />
