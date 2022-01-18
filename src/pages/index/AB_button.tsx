@@ -13,7 +13,7 @@ export const AB_button = ({ backButton, handleLotteryNumber }: Props) => {
       <button
         type="button"
         onClick={backButton}
-        className="flex justify-center items-center mt-4 w-14 h-14 text-2xl text-gray-700 bg-gray-800 rounded-full shadow-sm active:shadow-none shadow-black"
+        className="flex justify-center items-center mt-4 w-16 h-16 text-2xl text-gray-700 bg-gray-800 rounded-full shadow-sm active:shadow-none shadow-black"
       >
         B
       </button>
@@ -21,7 +21,7 @@ export const AB_button = ({ backButton, handleLotteryNumber }: Props) => {
         type="button"
         disabled={isAnimation}
         onClick={() => handleLotteryNumber(1, 151)}
-        className="flex justify-center items-center w-14 h-14 text-2xl text-gray-700 bg-gray-800 rounded-full shadow-sm active:shadow-none shadow-black"
+        className="flex justify-center items-center w-16 h-16 text-2xl text-gray-700 bg-gray-800 rounded-full shadow-sm active:shadow-none shadow-black"
       >
         A
       </button>
