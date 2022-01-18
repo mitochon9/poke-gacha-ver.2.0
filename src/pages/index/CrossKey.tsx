@@ -39,7 +39,7 @@ export const CrossKey = () => {
       {["", "▲", "", "◀", "●", "▶", "", "▼", ""].map((item, index) => (
         <button
           key={index}
-          className={`w-8 h-8
+          className={`w-10 h-10
       ${
         index === 0
           ? "bg-transparent"
