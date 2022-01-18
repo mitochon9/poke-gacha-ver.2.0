@@ -1,28 +1,27 @@
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { isAnimationState } from "src/component/state/isAnimationAtom";
+import { isDeleteOpenState } from "src/component/state/isDeleteOpenAtom";
 import { isShowPictureBookState } from "src/component/state/isShowPictureBookAtom";
 
-type Props = {
-  backButton: VoidFunction;
-  handleLotteryNumber: (min: number, max: number) => (() => void) | undefined;
-};
-
-export const StartSelect_Button = ({ handleLotteryNumber }: Props) => {
+export const StartSelect_Button = () => {
   const isAnimation = useRecoilValue(isAnimationState);
   const setIsShowPictureBook = useSetRecoilState(isShowPictureBookState);
+
+  const setIsDeleteOpen = useSetRecoilState(isDeleteOpenState);
 
   return (
     <div>
       <div className="flex gap-x-6 justify-center mt-16">
         <button
           type="button"
+          disabled={isAnimation}
           onClick={() => setIsShowPictureBook(true)}
           className="w-12 h-5 bg-gray-800 rounded-full shadow-sm active:shadow-none shadow-black cursor-pointer"
         ></button>
         <button
           type="button"
           disabled={isAnimation}
-          onClick={() => handleLotteryNumber(1, 151)}
+          onClick={() => setIsDeleteOpen(true)}
           className="w-12 h-5 bg-gray-800 rounded-full shadow-sm active:shadow-none shadow-black cursor-pointer"
         ></button>
       </div>
