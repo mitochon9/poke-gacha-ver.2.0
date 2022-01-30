@@ -26,7 +26,7 @@ export const ShowPictureBook = () => {
   }, [scrollY]);
 
   return (
-    <div ref={ref} className="overflow-auto w-auto h-60">
+    <div ref={ref} className="overflow-auto w-auto h-60 md:h-80">
       <h1 className="text-xs">つかまえたポケモン</h1>
       <div className="px-2 space-y-2 w-auto h-52">
         {parsedStorageData?.length === 0 ? (

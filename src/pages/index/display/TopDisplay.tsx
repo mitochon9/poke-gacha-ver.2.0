@@ -31,7 +31,7 @@ export const TopDisplay = () => {
 
   if (isDeleteOpen) {
     return (
-      <div className="flex relative justify-center items-center w-auto h-60">
+      <div className="flex relative justify-center items-center w-auto h-60 md:h-80">
         <div>
           <h2 className="text-lg font-medium leading-6 text-gray-900">データ削除</h2>
           <div className="mt-2">
@@ -67,7 +67,7 @@ export const TopDisplay = () => {
 
   if (isDeleteNotify) {
     return (
-      <div className="flex relative justify-center items-center w-auto h-60">
+      <div className="flex relative justify-center items-center w-auto h-60 md:h-80">
         <div>
           <h2 className="text-lg font-medium leading-6 text-gray-900">データ削除</h2>
           <div className="mt-2">
@@ -92,7 +92,7 @@ export const TopDisplay = () => {
   }
 
   return (
-    <div className="relative pt-2 w-auto h-60">
+    <div className="relative pt-2 w-auto h-60 md:h-80">
       <h1 className="text-2xl font-extrabold text-center scale-y-125">ポケットモンスター</h1>
       <h2 className="mt-1 text-sm font-bold tracking-widest text-center">POCKET MONSTERS</h2>
       <h3 className="mt-1 text-xs font-bold text-center">Red Version</h3>
