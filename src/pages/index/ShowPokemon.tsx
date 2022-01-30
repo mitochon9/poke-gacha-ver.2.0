@@ -51,18 +51,18 @@ export const ShowPokemon = () => {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center w-auto h-60">
+      <div className="flex justify-center items-center w-auto h-60 md:h-80">
         <Image src="/monsterBall.png" alt="モンスターボール" width={60} height={60} className="rotate-[-30deg]" />
       </div>
     );
   }
 
   if (isError) {
-    return <div className="w-auto h-60">データの取得に失敗しました</div>;
+    return <div className="w-auto h-60 md:h-80">データの取得に失敗しました</div>;
   }
 
   return (
-    <div className="grid items-end pb-4 w-auto h-60">
+    <div className="grid items-end pb-4 w-auto h-60 md:h-80">
       <div className="col-span-3 text-center">
         <div>{pokemonId ? <Image src={pokeImg} alt="ポケモン" width={160} height={160} /> : null}</div>
         <div className="-mt-4 text-xs md:text-base">
