@@ -4,18 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: "pokemon-font";
-  src: url("../fonts/pokemon-font.eot");
-  src: url("../fonts/pokemon-font.eot?#iefix") format("embedded-opentype");
-  src: url("../fonts/pokemon-font.woff2") format("woff2");
-  src: url("../fonts/pokemon-font.woff") format("woff");
-}
-
-.pokemon-font {
-  font-family: "pokemon-font", monospace;
-}
-
 .flash {
   animation: flash 2s linear infinite;
 }
