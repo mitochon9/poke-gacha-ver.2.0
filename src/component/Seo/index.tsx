@@ -12,7 +12,7 @@ export const Seo = () => (
       description: "懐かしのポケモンをガチャガチャ！",
       images: [
         {
-          url: `https://poke-gacha-ver-2-0.vercel.app/hitokage.png}`,
+          url: "https://poke-gacha-ver-2-0.vercel.app/hitokage.png",
           width: 800,
           height: 600,
           alt: "OGP画像",
