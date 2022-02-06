@@ -4167,10 +4167,17 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
-next@12.0.9:
-  version "12.0.9"
-  resolved "https://registry.yarnpkg.com/next/-/next-12.0.9.tgz#4eb3006b63bb866f5c2918ca0003e98f4259e063"
-  integrity sha512-omfYqoR/DvbdOIJ6SS1unKJ4mGIxUPs0RPa7wr/Mft22OCKgJhuG+aI9KFYi5ZJBwoFQk1vqaMKpWz5qr+dN0Q==
+
+next-seo@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-5.1.0.tgz#aa9fd6249a11bf93e6da06fa2a6bc89268936edf"
+  integrity sha512-ampuQfNTOi1x+xtRIb6CZGunIo6rQXtMo2Tyu861d5GjJFIwfOXsA4lzCa4+e2rLkyXDyVpavNNUZWa3US9ELw==
+
+next@12.0.8:
+  version "12.0.8"
+  resolved "https://registry.yarnpkg.com/next/-/next-12.0.8.tgz#29138f7cdd045e4bbba466af45bf430e769634b4"
+  integrity sha512-g5c1Kuh1F8tSXJn2rVvzYBzqe9EXaR6+rY3/KrQ7y0D9FueRLfHI35wM0DRadDcPSc3+vncspfhYH3jnYE/KjA==
+
   dependencies:
     "@next/env" "12.0.9"
     caniuse-lite "^1.0.30001283"
