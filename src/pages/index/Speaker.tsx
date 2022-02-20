@@ -3,15 +3,18 @@ import { useCallback, useEffect, useState } from "react";
 export const Speaker = () => {
   const [volumeHole, setVolumeHole] = useState<string[]>([]);
 
+  // 60個の空文字の配列を作る
   const createVolumeHole = useCallback(() => {
     for (let index = 0; index < 60; index++) {
       setVolumeHole((volumeHole) => [...volumeHole, ""]);
     }
   }, []);
 
+  // 画面表示時に空文字の配列を作る関数を実行
   useEffect(() => {
     createVolumeHole();
-  }, [createVolumeHole]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="absolute right-3 -bottom-2 -rotate-12">
@@ -20,15 +23,14 @@ export const Speaker = () => {
           <div
             key={index}
             className={`w-1 h-1 rounded-full bg-gray-600 ${
-              index === 0
-                ? "col-start-2"
-                : index === 5
-                ? "col-span-2"
-                : index === 54
-                ? "col-start-2"
-                : index === 59
-                ? "col-span-2"
-                : "col-span-1"
+              index === 0 || index === 54
+                ? // 左上角、左下角の場合
+                  "col-start-2"
+                : index === 5 || index === 59
+                ? // 右上角、左下角の場合
+                  "col-span-2"
+                : // それ以外
+                  "col-span-1"
             }`}
           >
             {item}

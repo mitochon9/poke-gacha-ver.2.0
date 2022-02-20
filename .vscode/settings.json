@@ -11,5 +11,15 @@
   "files.eol": "\n",
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "typescript.tsdk": "node_modules/typescript/lib",
-  "cSpell.words": ["Compat", "headlessui", "hitokage", "karam", "mitochon", "msapplication", "nexst", "tailwindcss"]
+  "cSpell.words": [
+    "Compat",
+    "headlessui",
+    "hitokage",
+    "karam",
+    "mitochon",
+    "msapplication",
+    "nexst",
+    "Pokédex",
+    "tailwindcss"
+  ]
 }

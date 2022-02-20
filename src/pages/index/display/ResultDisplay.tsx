@@ -1,68 +1,73 @@
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
-import { usePokeApi01, usePokeApi02 } from "src/component/hooks/usePokeApi";
+import { useJapanesePokeApi, usePokeApi } from "src/component/hooks/usePokeApi";
 import { pokemonIdState } from "src/component/state/pokemonIdAtom";
 import type { PokemonData } from "src/type/pokemonData";
 
-export const ShowPokemon = () => {
+export const ResultDisplay = () => {
+  // localStorage のデータを取得
   const storageData = localStorage.getItem("storageData");
-
+  // JSON 形式に変換
   const parsedStorageData = storageData ? JSON.parse(storageData) : [];
 
   const pokemonId = useRecoilValue(pokemonIdState);
-
   const [pokemonData, setPokemonData] = useState(parsedStorageData ? parsedStorageData : []);
 
-  const { data: data01, error: error01, isLoading: isLoading01 }: any = usePokeApi01(pokemonId);
-  const { data: data02, error: error02, isLoading: isLoading02 }: any = usePokeApi02(pokemonId);
+  const { data, error, isLoading }: any = usePokeApi(pokemonId);
+  const {
+    data: japaneseData,
+    error: japaneseDataError,
+    isLoading: isJapaneseDataLoading,
+  }: any = useJapanesePokeApi(pokemonId);
 
   const pokeImg = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`;
 
-  const isLoading = isLoading01 || isLoading02;
-  const isError = error01 || error02;
-
   const setFields = useCallback(() => {
-    if (data01 && data02 && pokemonId) {
+    if (data && japaneseData && pokemonId) {
+      // pokemonData に抽選で選ばれたデータを配列に追加する処理
       setPokemonData((pokemonData: PokemonData) => [
         ...pokemonData,
         {
-          id: data01?.id,
-          name: data02?.names[0]?.name,
-          genus: data02?.genera[0]?.genus,
-          height: data01?.height,
-          weight: data01?.weight,
-          flavorText: data02?.flavor_text_entries[38]?.flavor_text,
+          id: data?.id,
+          name: japaneseData?.names[0]?.name,
+          genus: japaneseData?.genera[0]?.genus,
+          height: data?.height,
+          weight: data?.weight,
+          flavorText: japaneseData?.flavor_text_entries[38]?.flavor_text,
           img: pokeImg,
         },
       ]);
     }
-  }, [data01, data02, setPokemonData, pokemonId, pokeImg]);
+  }, [data, japaneseData, setPokemonData, pokemonId, pokeImg]);
 
+  // setFields() を実行
   useEffect(() => {
     setFields();
   }, [setFields]);
 
+  // localStorage にセット
   useEffect(() => {
-    if (data01 && data02 && pokemonId) {
+    if (data && japaneseData && pokemonId) {
       localStorage.setItem("storageData", JSON.stringify(pokemonData));
     }
-  }, [pokemonData, data01, data02, pokemonId]);
+  }, [pokemonData, data, japaneseData, pokemonId]);
 
-  if (isLoading) {
+  // モンスターボールのアニメーションが終わってもデータ取得ができていない場合にモンスターボールの画像を表示する
+  if (isLoading || isJapaneseDataLoading) {
     return (
-      <div className="flex justify-center items-center w-auto h-60 md:h-80">
+      <div className="flex justify-center items-center w-auto h-60">
         <Image src="/monsterBall.png" alt="モンスターボール" width={60} height={60} className="rotate-[-30deg]" />
       </div>
     );
   }
 
-  if (isError) {
-    return <div className="w-auto h-60 md:h-80">データの取得に失敗しました</div>;
+  if (error || japaneseDataError) {
+    return <div className="w-auto h-60">データの取得に失敗しました</div>;
   }
 
   return (
-    <div className="grid items-end pb-4 w-auto h-60 md:h-80">
+    <div className="grid items-end pb-4 w-auto h-60">
       <div className="col-span-3 text-center">
         <div>{pokemonId ? <Image src={pokeImg} alt="ポケモン" width={160} height={160} /> : null}</div>
         <div className="-mt-4 text-xs md:text-base">
@@ -71,10 +76,10 @@ export const ShowPokemon = () => {
         </div>
       </div>
       <div className="col-span-4 text-xs leading-loose text-left md:text-base">
-        <div>{data02?.names[0]?.name}</div>
-        <div className="md:mt-2">{data02?.genera[0]?.genus}</div>
-        <div className="md:mt-2">たかさ {(data01?.height / 10).toFixed(1)}m</div>
-        <div className="md:mt-2">おもさ {(data01?.weight / 10).toFixed(1)}kg</div>
+        <div>{japaneseData?.names[0]?.name}</div>
+        <div className="md:mt-2">{japaneseData?.genera[0]?.genus}</div>
+        <div className="md:mt-2">たかさ {(data?.height / 10).toFixed(1)}m</div>
+        <div className="md:mt-2">おもさ {(data?.weight / 10).toFixed(1)}kg</div>
       </div>
       <div className="relative col-span-7 mt-2 w-full border-2 border-gray-600">
         <div className="flex absolute top-[-7px] col-span-7 justify-around w-full">
@@ -88,9 +93,7 @@ export const ShowPokemon = () => {
           ))}
         </div>
       </div>
-      <div className="col-span-7 px-2 mt-2 text-xs text-left md:text-base">
-        {data02?.flavor_text_entries[38]?.flavor_text}
-      </div>
+      <div className="col-span-7 px-2 mt-2 text-xs text-left">{japaneseData?.flavor_text_entries[38]?.flavor_text}</div>
     </div>
   );
 };
