@@ -1,11 +1,12 @@
 import type { VFC } from "react";
 import { useCallback } from "react";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { gameBoyColorNumState } from "src/component/state/gameBoyColorNumAtom";
 import { isAnimationState } from "src/component/state/isAnimationAtom";
-import { isDeleteNotifyState } from "src/component/state/isDeleteNotifyAtom";
-import { isDeleteOpenState } from "src/component/state/isDeleteOpenAtom";
-import { isOpenResultState } from "src/component/state/isOpenResultAtom";
-import { isShowPictureBookState } from "src/component/state/isShowPictureBookAtom";
+import { isDeletionCompletedState } from "src/component/state/isDeletionCompletedAtom";
+import { isDeletionConfirmationState } from "src/component/state/isDeletionConfirmationAtom";
+import { isPokedexState } from "src/component/state/isPokedexAtom";
+import { isResultDisplayState } from "src/component/state/isResultDisplayAtom";
 import { pokemonIdState } from "src/component/state/pokemonIdAtom";
 import { AB_button } from "src/pages/index/AB_button";
 import { CrossKey } from "src/pages/index/CrossKey";
@@ -17,68 +18,72 @@ import { Speaker } from "src/pages/index/Speaker";
 import { StartSelect_Button } from "src/pages/index/StartSelect_Button";
 
 export const Index: VFC = () => {
-  const setIsOpenResult = useSetRecoilState(isOpenResultState);
+  const setIsResultDisplay = useSetRecoilState(isResultDisplayState);
   const setIsAnimation = useSetRecoilState(isAnimationState);
-  const [isPictureBook, setIsPictureBook] = useRecoilState(isShowPictureBookState);
+  const setIsPokedexBook = useSetRecoilState(isPokedexState);
 
-  const [isDeleteOpen, setIsDeleteOpen] = useRecoilState(isDeleteOpenState);
-  const [isDeleteNotify, setIsDeleteNotify] = useRecoilState(isDeleteNotifyState);
+  const [isDeletionConfirmation, setIsDeletionConfirmation] = useRecoilState(isDeletionConfirmationState);
+  const [isDeletionCompleted, setIsDeletionCompleted] = useRecoilState(isDeletionCompletedState);
+
+  const gameBoyColorNum = useRecoilValue(gameBoyColorNumState);
 
   const setPokemonId = useSetRecoilState<number>(pokemonIdState);
 
-  const backButton = () => {
-    setIsOpenResult(false);
-    setIsPictureBook(false);
-    setIsDeleteOpen(false);
-  };
-  const handleLotteryNumber = useCallback(
-    (min: number, max: number) => {
-      try {
-        if (isPictureBook) {
-          return;
-        }
+  const handlePressB = useCallback(() => {
+    setIsResultDisplay(false);
+    setIsPokedexBook(false);
+    setIsDeletionConfirmation(false);
+  }, [setIsDeletionConfirmation, setIsPokedexBook, setIsResultDisplay]);
 
-        if (isDeleteOpen) {
-          localStorage.clear();
-          setIsDeleteOpen(false);
-          setIsDeleteNotify(true);
-          return;
-        }
+  const handlePressA = useCallback(() => {
+    if (isDeletionConfirmation) {
+      // localStorage のデータ削除
+      localStorage.clear();
+      setIsDeletionConfirmation(false);
+      setIsDeletionCompleted(true);
+      return;
+    }
 
-        if (isDeleteNotify) {
-          setIsDeleteNotify(false);
-          return;
-        }
+    if (isDeletionCompleted) {
+      // トップ画面へ遷移
+      setIsDeletionCompleted(false);
+      return;
+    }
 
-        setIsAnimation(true);
+    // モンスターボールのアニメーション画面へ遷移
+    setIsAnimation(true);
+    // 1 〜 151 の番号でランダムに抽選
+    const lotteryNumber = Math.floor(Math.random() * (151 - 1) + 1);
+    setPokemonId(lotteryNumber);
 
-        const lotteryNumber = Math.floor(Math.random() * (max - min) + min);
-
-        setPokemonId(lotteryNumber);
-
-        const timer = setTimeout(() => {
-          setIsAnimation(false);
-          setIsOpenResult(true);
-        }, 2000);
-        return () => clearTimeout(timer);
-      } catch {
-      } finally {
-      }
-    },
-    [
-      setPokemonId,
-      setIsAnimation,
-      setIsOpenResult,
-      isPictureBook,
-      isDeleteNotify,
-      isDeleteOpen,
-      setIsDeleteNotify,
-      setIsDeleteOpen,
-    ]
-  );
+    // 2秒後にガチャ結果画面を表示
+    const timer = setTimeout(() => {
+      setIsAnimation(false);
+      setIsResultDisplay(true);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, [
+    setPokemonId,
+    setIsAnimation,
+    setIsResultDisplay,
+    isDeletionCompleted,
+    isDeletionConfirmation,
+    setIsDeletionCompleted,
+    setIsDeletionConfirmation,
+  ]);
 
   return (
-    <div className="relative">
+    <div
+      className={`relative pt-1 pb-2 mx-auto max-w-md min-h-[704px] rounded-xl rounded-b-3xl shadow ${
+        gameBoyColorNum === 0
+          ? "bg-[#C83031]"
+          : gameBoyColorNum === 1
+          ? "bg-[#FED20D]"
+          : gameBoyColorNum === 2
+          ? "bg-[#543DB8]"
+          : "bg-[#1C9ACD]"
+      }`}
+    >
       {/* 画面部分 */}
       <Display />
 
@@ -97,7 +102,7 @@ export const Index: VFC = () => {
         <div className="col-span-2"></div>
 
         {/* A B button */}
-        <AB_button backButton={backButton} handleLotteryNumber={handleLotteryNumber} />
+        <AB_button handlePressB={handlePressB} handlePressA={handlePressA} />
       </div>
 
       {/* start select button */}
