@@ -67,7 +67,7 @@ export const ResultDisplay = () => {
   }
 
   return (
-    <div className="grid items-end pb-4 w-auto h-60">
+    <div className="grid grid-cols-7 items-end pb-4 w-auto h-60">
       <div className="col-span-3 text-center">
         <div>{pokemonId ? <Image src={pokeImg} alt="ポケモン" width={160} height={160} /> : null}</div>
         <div className="-mt-4 text-xs md:text-base">
