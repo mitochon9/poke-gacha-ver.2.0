@@ -11,7 +11,8 @@ export const CrossKey = () => {
   const [displayHeight, setDisplayHeight] = useState(0);
   const storageDataLength = useRecoilValue(storageDataLengthState);
 
-  const [gameBoyColorNum, setGameBoyColorNum] = useRecoilState(gameBoyColorNumState);
+  const [gameBoyColorNum, setGameBoyColorNum] =
+    useRecoilState(gameBoyColorNumState);
 
   useEffect(() => {
     // 見出しの高さ + 配列の数 * 要素一つあたりの高さ - 画面の高さ
@@ -57,33 +58,41 @@ export const CrossKey = () => {
 
   return (
     <div className="grid grid-cols-3">
-      {["", "▲", "", "◀", "●", "▶", "", "▼", ""].map((item, index) => (
-        <button
-          key={index}
-          className={`w-10 h-10
+      {["", "▲", "", "◀", "●", "▶", "", "▼", ""].map((item, index) => {
+        return (
+          <button
+            key={index}
+            className={`w-10 h-10
       ${
         index === 0 || index === 2 || index === 6 || index === 8
           ? "bg-transparent"
-          : index === 1 || index === 3 || index === 4 || index === 5 || index === 7
+          : index === 1 ||
+            index === 3 ||
+            index === 4 ||
+            index === 5 ||
+            index === 7
           ? "bg-gray-800 border text-gray-700 border-gray-800 flex justify-center items-center text-2xl active:shadow-none hover:cursor-pointer shadow-black"
           : ""
       }
       `}
-          onClick={
-            index === 1
-              ? scrollUp
-              : index === 7
-              ? scrollDown
-              : index === 3
-              ? colorNumDown
-              : index === 5
-              ? colorNumUp
-              : (e) => e.preventDefault
-          }
-        >
-          {item}
-        </button>
-      ))}
+            onClick={
+              index === 1
+                ? scrollUp
+                : index === 7
+                ? scrollDown
+                : index === 3
+                ? colorNumDown
+                : index === 5
+                ? colorNumUp
+                : (e) => {
+                    return e.preventDefault;
+                  }
+            }
+          >
+            {item}
+          </button>
+        );
+      })}
     </div>
   );
 };

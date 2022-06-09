@@ -12,7 +12,9 @@ export const ResultDisplay = () => {
   const parsedStorageData = storageData ? JSON.parse(storageData) : [];
 
   const pokemonId = useRecoilValue(pokemonIdState);
-  const [pokemonData, setPokemonData] = useState(parsedStorageData ? parsedStorageData : []);
+  const [pokemonData, setPokemonData] = useState(
+    parsedStorageData ? parsedStorageData : []
+  );
 
   const { data, error, isLoading }: any = usePokeApi(pokemonId);
   const {
@@ -26,18 +28,20 @@ export const ResultDisplay = () => {
   const setFields = useCallback(() => {
     if (data && japaneseData && pokemonId) {
       // pokemonData に抽選で選ばれたデータを配列に追加する処理
-      setPokemonData((pokemonData: PokemonData) => [
-        ...pokemonData,
-        {
-          id: data?.id,
-          name: japaneseData?.names[0]?.name,
-          genus: japaneseData?.genera[0]?.genus,
-          height: data?.height,
-          weight: data?.weight,
-          flavorText: japaneseData?.flavor_text_entries[38]?.flavor_text,
-          img: pokeImg,
-        },
-      ]);
+      setPokemonData((pokemonData: PokemonData) => {
+        return [
+          ...pokemonData,
+          {
+            id: data?.id,
+            name: japaneseData?.names[0]?.name,
+            genus: japaneseData?.genera[0]?.genus,
+            height: data?.height,
+            weight: data?.weight,
+            flavorText: japaneseData?.flavor_text_entries[38]?.flavor_text,
+            img: pokeImg,
+          },
+        ];
+      });
     }
   }, [data, japaneseData, setPokemonData, pokemonId, pokeImg]);
 
@@ -57,7 +61,13 @@ export const ResultDisplay = () => {
   if (isLoading || isJapaneseDataLoading) {
     return (
       <div className="flex justify-center items-center w-auto h-60">
-        <Image src="/monsterBall.png" alt="モンスターボール" width={60} height={60} className="rotate-[-30deg]" />
+        <Image
+          src="/monsterBall.png"
+          alt="モンスターボール"
+          width={60}
+          height={60}
+          className="rotate-[-30deg]"
+        />
       </div>
     );
   }
@@ -69,7 +79,11 @@ export const ResultDisplay = () => {
   return (
     <div className="grid grid-cols-7 items-end pb-4 w-auto h-60">
       <div className="col-span-3 text-center">
-        <div>{pokemonId ? <Image src={pokeImg} alt="ポケモン" width={160} height={160} /> : null}</div>
+        <div>
+          {pokemonId ? (
+            <Image src={pokeImg} alt="ポケモン" width={160} height={160} />
+          ) : null}
+        </div>
         <div className="-mt-4 text-xs md:text-base">
           No.
           {pokemonId ? pokemonId : null}
@@ -83,17 +97,23 @@ export const ResultDisplay = () => {
       </div>
       <div className="relative col-span-7 mt-2 w-full border-2 border-gray-600">
         <div className="flex absolute top-[-7px] col-span-7 justify-around w-full">
-          {["", "", "", "", "", "", "", "", ""].map((item, index) => (
-            <div
-              key={index}
-              className={`z-10 w-[14px] h-[14px]  ${index === 4 ? "" : "bg-amber-50 border border-gray-700"} `}
-            >
-              {item}
-            </div>
-          ))}
+          {["", "", "", "", "", "", "", "", ""].map((item, index) => {
+            return (
+              <div
+                key={index}
+                className={`z-10 w-[14px] h-[14px]  ${
+                  index === 4 ? "" : "bg-amber-50 border border-gray-700"
+                } `}
+              >
+                {item}
+              </div>
+            );
+          })}
         </div>
       </div>
-      <div className="col-span-7 px-2 mt-2 text-xs text-left">{japaneseData?.flavor_text_entries[38]?.flavor_text}</div>
+      <div className="col-span-7 px-2 mt-2 text-xs text-left">
+        {japaneseData?.flavor_text_entries[38]?.flavor_text}
+      </div>
     </div>
   );
 };

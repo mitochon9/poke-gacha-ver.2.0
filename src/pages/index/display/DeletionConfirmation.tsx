@@ -5,7 +5,9 @@ import { isDeletionCompletedState } from "src/component/state/isDeletionComplete
 import { isDeletionConfirmationState } from "src/component/state/isDeletionConfirmationAtom";
 
 export const DeletionConfirmation: VFC = () => {
-  const setIsDeletionConfirmation = useSetRecoilState(isDeletionConfirmationState);
+  const setIsDeletionConfirmation = useSetRecoilState(
+    isDeletionConfirmationState
+  );
   const setIsDeletionCompleted = useSetRecoilState(isDeletionCompletedState);
 
   const closeModal = useCallback(() => {
@@ -21,7 +23,9 @@ export const DeletionConfirmation: VFC = () => {
   return (
     <div className="flex relative justify-center items-center w-auto h-60">
       <div>
-        <h2 className="text-lg font-medium leading-6 text-gray-900">データ削除</h2>
+        <h2 className="text-lg font-medium leading-6 text-gray-900">
+          データ削除
+        </h2>
         <div className="mt-2">
           <p className="text-sm text-gray-500">本当に削除しますか？</p>
         </div>
