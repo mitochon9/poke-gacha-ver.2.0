@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 
-import { baseId, CircleButton } from "./CircleButton";
+import { CircleButton } from "./CircleButton";
 import { propObj } from "./CircleButton.props";
 import type { CircleButtonProps } from "./CircleButton.type";
 
