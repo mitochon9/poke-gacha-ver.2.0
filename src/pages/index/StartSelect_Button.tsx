@@ -20,8 +20,15 @@ export const StartSelect_Button = () => {
         {/* Select ボタン ポケモン図鑑画面に遷移 */}
         <button
           type="button"
-          disabled={isAnimation || isResultDisplay || isDeletionConfirmation || isDeletionCompleted}
-          onClick={() => setIsPokedex(true)}
+          disabled={
+            isAnimation ||
+            isResultDisplay ||
+            isDeletionConfirmation ||
+            isDeletionCompleted
+          }
+          onClick={() => {
+            return setIsPokedex(true);
+          }}
           className="w-14 h-5 bg-gray-800 rounded-full shadow-sm active:shadow-none shadow-black cursor-pointer"
         ></button>
 
@@ -29,7 +36,9 @@ export const StartSelect_Button = () => {
         <button
           type="button"
           disabled={isAnimation || isResultDisplay || isDeletionCompleted}
-          onClick={() => setIsDeleteOpen(true)}
+          onClick={() => {
+            return setIsDeleteOpen(true);
+          }}
           className="w-14 h-5 bg-gray-800 rounded-full shadow-sm active:shadow-none shadow-black cursor-pointer"
         ></button>
       </div>

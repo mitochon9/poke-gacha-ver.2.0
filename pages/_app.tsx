@@ -6,7 +6,11 @@ import { RecoilRoot } from "recoil";
 import { Seo } from "src/component/Seo";
 
 const App: CustomAppPage = ({ Component, pageProps }) => {
-  const getLayout = Component.getLayout || ((page) => page);
+  const getLayout =
+    Component.getLayout ||
+    ((page) => {
+      return page;
+    });
 
   return (
     <>

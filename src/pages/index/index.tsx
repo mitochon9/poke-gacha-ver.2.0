@@ -22,8 +22,12 @@ export const Index: VFC = () => {
   const setIsAnimation = useSetRecoilState(isAnimationState);
   const setIsPokedexBook = useSetRecoilState(isPokedexState);
 
-  const [isDeletionConfirmation, setIsDeletionConfirmation] = useRecoilState(isDeletionConfirmationState);
-  const [isDeletionCompleted, setIsDeletionCompleted] = useRecoilState(isDeletionCompletedState);
+  const [isDeletionConfirmation, setIsDeletionConfirmation] = useRecoilState(
+    isDeletionConfirmationState
+  );
+  const [isDeletionCompleted, setIsDeletionCompleted] = useRecoilState(
+    isDeletionCompletedState
+  );
 
   const gameBoyColorNum = useRecoilValue(gameBoyColorNumState);
 
@@ -61,7 +65,9 @@ export const Index: VFC = () => {
       setIsAnimation(false);
       setIsResultDisplay(true);
     }, 2000);
-    return () => clearTimeout(timer);
+    return () => {
+      return clearTimeout(timer);
+    };
   }, [
     setPokemonId,
     setIsAnimation,
