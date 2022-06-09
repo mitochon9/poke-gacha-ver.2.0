@@ -1,13 +1,13 @@
 import type { CircleButtonProps } from "./CircleButton.type";
 
-const buttonTypeA: CircleButtonProps = {
+const buttonTypeAProps: CircleButtonProps = {
   buttonType: "A",
 };
-const buttonTypeB: CircleButtonProps = {
+const buttonTypeBProps: CircleButtonProps = {
   buttonType: "B",
 };
 
 export const propObj: { [key: string]: CircleButtonProps } = {
-  buttonTypeA: buttonTypeA,
-  buttonTypeB: buttonTypeB,
+  buttonTypeA: buttonTypeAProps,
+  buttonTypeB: buttonTypeBProps,
 };
