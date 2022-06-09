@@ -1,0 +1,21 @@
+import { GetStaticProps } from 'next';
+
+export interface {{pascalCase name}}Props {}
+
+export const defaultProps: {{pascalCase name}}Props = {};
+
+export const baseId = '{{atomic}}-{{kebabCase name}}';
+
+export const {{pascalCase name}} = (props: {{pascalCase name}}Props) => (
+  <>
+    <h1>Hello, {{pascalCase name}} page</h1>
+  </>
+);
+
+export const getStaticProps: GetStaticProps = () => {
+  return {
+    props: {},
+  };
+};
+
+export default {{pascalCase name}};

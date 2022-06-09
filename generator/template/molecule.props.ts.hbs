@@ -1,0 +1,25 @@
+import { {{pascalCase name}}Props } from './{{pascalCase name}}.type';
+
+const defaultProps: {{pascalCase name}}Props = {};
+
+/**
+ * const propObj への補足。
+ * propObj の中身が3つ以上になる場合、以下のように書くと便利です。
+ * 使わないときはこのコメントアウト部分は削除してください。
+ */
+ /*interface PropObj {
+  default: {{pascalCase name}}Props;
+  pattern1(適宜名称を変えてください): {{pascalCase name}}Props;
+  pattern2: {{pascalCase name}}Props;
+  ...
+}
+export const propObj: PropObj = {
+  default: defaultProps,
+    pattern1(適宜名称を変えてください): pattern1Props;
+  pattern2: pattern2Props;
+  ...
+}*/
+
+export const propObj: { [key: string]: {{pascalCase name}}Props } = {
+  default: defaultProps,
+};

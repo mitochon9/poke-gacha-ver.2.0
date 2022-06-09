@@ -1,4 +1,5 @@
 __tests__
+*.hbs
 .next
 node_modules
 yarn.lock
