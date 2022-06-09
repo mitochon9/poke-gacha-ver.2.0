@@ -9,6 +9,9 @@
     "build": "pathpida --enableStatic --ignorePath .gitignore --output src/lib && next build",
     "start": "next start",
     "serve": "run-s build start",
+    "sb": "start-storybook -p 6006 -h localhost",
+    "build-storybook": "build-storybook -s public",
+    "generate": "plop --plopfile ./generator/plopfile.js",
     "lint": "next lint",
     "prettier": "prettier --check .",
     "unit": "jest",
@@ -33,7 +36,16 @@
     "react-error-boundary": "3.1.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.18.2",
     "@playwright/test": "1.22.2",
+    "@storybook/addon-actions": "^6.5.8",
+    "@storybook/addon-essentials": "^6.5.8",
+    "@storybook/addon-interactions": "^6.5.8",
+    "@storybook/addon-links": "^6.5.8",
+    "@storybook/builder-webpack5": "^6.5.8",
+    "@storybook/manager-webpack5": "^6.5.8",
+    "@storybook/react": "^6.5.8",
+    "@storybook/testing-library": "^0.0.11",
     "@tailwindcss/forms": "0.5.2",
     "@tailwindcss/line-clamp": "0.4.0",
     "@tailwindcss/typography": "0.5.2",
@@ -47,12 +59,14 @@
     "@typescript-eslint/eslint-plugin": "5.27.1",
     "@typescript-eslint/parser": "5.27.1",
     "autoprefixer": "10.4.7",
+    "babel-loader": "^8.2.5",
     "eslint": "8.17.0",
     "eslint-config-next": "12.1.6",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-import-access": "1.0.1",
     "eslint-plugin-simple-import-sort": "7.0.0",
     "eslint-plugin-sort-destructure-keys": "1.4.0",
+    "eslint-plugin-storybook": "^0.5.12",
     "eslint-plugin-tailwindcss": "3.5.2",
     "eslint-plugin-testing-library": "5.5.1",
     "husky": "8.0.1",
@@ -61,10 +75,13 @@
     "lint-staged": "13.0.1",
     "npm-run-all": "4.1.5",
     "pathpida": "0.18.1",
+    "plop": "^3.1.0",
     "postcss": "8.4.14",
     "prettier": "2.6.2",
     "react-test-renderer": "18.1.0",
+    "storybook-addon-next": "^1.6.4",
     "tailwindcss": "3.0.24",
+    "tsconfig-paths-webpack-plugin": "^3.5.2",
     "typescript": "4.7.3"
   },
   "lint-staged": {
@@ -75,5 +92,10 @@
     "**/*.{json,md,mdx,css,html,yml,yaml,scss}": [
       "prettier --write ."
     ]
+  },
+  "resolutions": {
+    "glob-parent": "5.1.2",
+    "trim": "0.0.3",
+    "trim-newlines": "3.0.1"
   }
 }
