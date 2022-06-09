@@ -11,15 +11,23 @@
   "files.eol": "\n",
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "typescript.tsdk": "node_modules/typescript/lib",
+  "tailwindCSS.experimental.classRegex": [
+    ["classNames\\(([^)]*)\\)", "\"([^\"]*)\""]
+  ],
   "cSpell.words": [
+    "analyse",
+    "automerge",
     "Compat",
     "headlessui",
     "hitokage",
+    "kalam",
     "karam",
     "mitochon",
     "msapplication",
     "nexst",
+    "pathpida",
     "Pokédex",
-    "tailwindcss"
+    "tailwindcss",
+    "viewports"
   ]
 }
