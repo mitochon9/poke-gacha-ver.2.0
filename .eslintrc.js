@@ -31,6 +31,7 @@ module.exports = {
         allow: ["warn", "info", "error"],
       },
     ],
+    "@typescript-eslint/no-empty-interface": "off",
     "no-restricted-syntax": [
       "error",
       {
