@@ -1,4 +1,4 @@
-import type { ComponentMeta } from "@storybook/react";
+import type { ComponentMeta, Story } from "@storybook/react";
 
 import { NintendoLogo } from "./NintendoLogo";
 
@@ -7,6 +7,6 @@ export default {
   component: NintendoLogo,
 } as ComponentMeta<typeof NintendoLogo>;
 
-const Template = () => <NintendoLogo />;
+const Template: Story = () => <NintendoLogo />;
 
 export const Default = Template.bind({});
