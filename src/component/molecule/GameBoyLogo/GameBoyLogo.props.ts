@@ -1,8 +1,6 @@
 import type { GameBoyLogoProps } from "./GameBoyLogo.type";
 
-const defaultProps: GameBoyLogoProps = {
-  character: ["C", "O", "L", "O", "R"],
-};
+const defaultProps: GameBoyLogoProps = {};
 
 export const propObj: { [key: string]: GameBoyLogoProps } = {
   default: defaultProps,

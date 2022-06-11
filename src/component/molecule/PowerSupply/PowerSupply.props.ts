@@ -1,8 +1,6 @@
 import type { PowerSupplyProps } from "./PowerSupply.type";
 
-const defaultProps: PowerSupplyProps = {
-  semicircle: ["", "", ""],
-};
+const defaultProps: PowerSupplyProps = {};
 
 export const propObj: { [key: string]: PowerSupplyProps } = {
   default: defaultProps,

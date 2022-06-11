@@ -1,3 +1,1 @@
-export interface PowerSupplyProps {
-  semicircle: string[];
-}
+export interface PowerSupplyProps {}

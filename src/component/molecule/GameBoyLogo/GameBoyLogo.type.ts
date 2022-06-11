@@ -1,3 +1,1 @@
-export interface GameBoyLogoProps {
-  character: string[];
-}
+export interface GameBoyLogoProps {}
