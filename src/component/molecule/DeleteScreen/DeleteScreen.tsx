@@ -3,7 +3,7 @@ import type { DeleteScreenProps } from "./DeleteScreen.type";
 export const baseId = "molecule-delete-screen";
 
 export const DeleteScreen: React.FC<DeleteScreenProps> = ({ isConfirm }) => (
-  <div className="flex justify-center items-center w-64 h-64 font-dot">
+  <div className="flex justify-center items-center w-[263px] h-[287px] font-dot">
     <div className="space-y-2 text-center">
       <h2>データ削除</h2>
       <p className="text-sm text-gray-600">

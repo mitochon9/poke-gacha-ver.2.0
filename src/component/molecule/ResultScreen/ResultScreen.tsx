@@ -6,7 +6,7 @@ export const baseId = "molecule-result-screen";
 
 export const ResultScreen: React.FC<ResultScreenProps> = ({ pokemon }) => (
   <>
-    <div className="grid grid-cols-7 py-4 w-64 h-64 font-dot">
+    <div className="grid grid-cols-7 py-4 w-[263px] h-[287px] font-dot">
       <div className="flex col-span-3 justify-center items-center text-center">
         <div>
           <div>
@@ -32,18 +32,17 @@ export const ResultScreen: React.FC<ResultScreenProps> = ({ pokemon }) => (
         </div>
       </div>
 
-      <div className="flex relative col-span-7 mt-2 h-0 border-2 border-gray-600">
-        <div className="flex absolute top-[-7px] justify-around w-full">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
-            <div
-              key={item}
-              className={`z-10 w-[14px] h-[14px]  ${
-                item === 5 ? "" : "bg-amber-50 border border-gray-700"
-              } `}
-            />
-          ))}
-        </div>
+      <div className="flex col-span-7 justify-around items-center">
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
+          <div
+            key={item}
+            className={`z-10 w-[14px] h-[14px]  ${
+              item === 5 ? "" : "bg-amber-50 border border-gray-700"
+            } `}
+          />
+        ))}
       </div>
+      <div className="col-span-7 mt-[-18px] h-0 border-2 border-gray-700" />
 
       <p
         data-testid={`${baseId}-commentary`}
