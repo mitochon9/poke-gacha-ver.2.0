@@ -2,11 +2,15 @@ import type { EllipseButtonProps } from "./EllipseButton.type";
 
 export const baseId = "molecule-ellipse-button";
 
-export const EllipseButton: React.FC<EllipseButtonProps> = ({ buttonType }) => (
+export const EllipseButton: React.FC<EllipseButtonProps> = ({
+  buttonType,
+  onClick,
+}) => (
   <>
     <div>
       <button
         type="button"
+        onClick={onClick}
         className="w-14 h-5 bg-gray-800 rounded-full shadow-sm active:shadow-none shadow-black cursor-pointer"
       />
       <span

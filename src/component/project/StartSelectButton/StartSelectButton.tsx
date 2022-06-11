@@ -4,15 +4,23 @@ import type { StartSelectButtonProps } from "./StartSelectButton.type";
 
 export const baseId = "project-start-select-button";
 
-export const StartSelectButton: React.FC<StartSelectButtonProps> = () => (
+export const StartSelectButton: React.FC<StartSelectButtonProps> = ({
+  setScreenType,
+}) => (
   <>
     <div className="flex gap-x-6">
       <div data-testid={`${baseId}-select`}>
-        <EllipseButton buttonType="select" />
+        <EllipseButton
+          buttonType="select"
+          onClick={() => setScreenType("pokedex")}
+        />
       </div>
 
       <div data-testid={`${baseId}-start`}>
-        <EllipseButton buttonType="start" />
+        <EllipseButton
+          buttonType="start"
+          onClick={() => setScreenType("delete")}
+        />
       </div>
     </div>
   </>
