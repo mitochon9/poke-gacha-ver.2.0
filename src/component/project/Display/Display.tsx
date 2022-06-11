@@ -21,31 +21,31 @@ export const Display: React.FC<DisplayProps> = ({
       case "top":
         return (
           <div data-testid={`${baseId}-top`}>
-            <TopScreen />;
+            <TopScreen />
           </div>
         );
       case "lottery":
         return (
           <div data-testid={`${baseId}-lottery`}>
-            <LotteryScreen />;
+            <LotteryScreen />
           </div>
         );
       case "result":
         return (
           <div data-testid={`${baseId}-result`}>
-            <ResultScreen pokemon={pokemon} />;
+            <ResultScreen pokemon={pokemon} />
           </div>
         );
       case "pokedex":
         return (
           <div data-testid={`${baseId}-pokedex`}>
-            <PokedexScreen pokemonList={pokemonList} />;
+            <PokedexScreen pokemonList={pokemonList} />
           </div>
         );
       case "delete":
         return (
           <div data-testid={`${baseId}-delete`}>
-            <DeleteScreen isConfirm={isConfirm} />;
+            <DeleteScreen isConfirm={isConfirm} />
           </div>
         );
       default:
