@@ -4,30 +4,30 @@ import type { ResultScreenProps } from "./ResultScreen.type";
 
 export const baseId = "molecule-result-screen";
 
-export const ResultScreen: React.FC<ResultScreenProps> = ({ pokemonData }) => (
+export const ResultScreen: React.FC<ResultScreenProps> = ({ pokemon }) => (
   <>
     <div className="grid grid-cols-7 py-4 w-64 h-64 font-dot">
       <div className="flex col-span-3 justify-center items-center text-center">
         <div>
           <div>
-            <Image {...pokemonData.image} alt={pokemonData.image.alt} />
+            <Image {...pokemon.image} alt={pokemon.image.alt} />
           </div>
           <p data-testid={`${baseId}-id`} className="text-xs">
             No.
-            {pokemonData.id}
+            {pokemon.id}
           </p>
         </div>
       </div>
 
       <div className="flex col-span-4 justify-center items-center text-xs leading-loose text-left">
         <div>
-          <p data-testid={`${baseId}-name`}>{pokemonData.name}</p>
-          <p data-testid={`${baseId}-type`}>{pokemonData.type}</p>
+          <p data-testid={`${baseId}-name`}>{pokemon.name}</p>
+          <p data-testid={`${baseId}-type`}>{pokemon.type}</p>
           <p data-testid={`${baseId}-height`}>
-            たかさ {(pokemonData.height / 10).toFixed(1)}m
+            たかさ {(pokemon.height / 10).toFixed(1)}m
           </p>
           <p data-testid={`${baseId}-weight`}>
-            おもさ {(pokemonData.weight / 10).toFixed(1)}kg
+            おもさ {(pokemon.weight / 10).toFixed(1)}kg
           </p>
         </div>
       </div>
@@ -49,7 +49,7 @@ export const ResultScreen: React.FC<ResultScreenProps> = ({ pokemonData }) => (
         data-testid={`${baseId}-commentary`}
         className="col-span-7 px-2 text-xs leading-loose text-left"
       >
-        {pokemonData.commentary}
+        {pokemon.commentary}
       </p>
     </div>
   </>

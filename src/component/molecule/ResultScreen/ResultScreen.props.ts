@@ -3,7 +3,7 @@ import sampleImage from "public/img/hitokage.png";
 import type { ResultScreenProps } from "./ResultScreen.type";
 
 const defaultProps: ResultScreenProps = {
-  pokemonData: {
+  pokemon: {
     image: {
       src: sampleImage,
       alt: "sample image",
