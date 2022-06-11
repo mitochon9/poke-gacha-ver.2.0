@@ -19,9 +19,11 @@ export const staticPath = {
     safari_pinned_tab_svg: '/favicons/safari-pinned-tab.svg',
     site_webmanifest: '/favicons/site.webmanifest'
   },
-  hitokage_png: '/hitokage.png',
-  monsterBall_png: '/monsterBall.png',
-  red_png: '/red.png'
+  img: {
+    hitokage_png: '/img/hitokage.png',
+    monsterBall_png: '/img/monsterBall.png',
+    red_png: '/img/red.png'
+  }
 } as const
 
 export type StaticPath = typeof staticPath

@@ -16,12 +16,11 @@
     "prettier": "prettier --check .",
     "unit": "jest",
     "e2e": "playwright test",
-    "test": "run-p -l -c --aggregate-output lint prettier unit",
+    "test": "npm-run-all lint prettier unit",
     "fix": "run-s -l -c fix:lint fix:prettier",
     "fix:lint": "next lint --fix",
     "fix:prettier": "prettier --write .",
-    "env": "vc env pull .env.local",
-    "prepare": "husky install"
+    "env": "vc env pull .env.local"
   },
   "postcss": {
     "plugins": {
