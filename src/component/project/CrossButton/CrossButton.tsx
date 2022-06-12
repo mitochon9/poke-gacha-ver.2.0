@@ -2,10 +2,10 @@ import type { CrossButtonProps } from "./CrossButton.type";
 
 export const baseId = "project-cross-button";
 
-export const CrossButton: React.FC<CrossButtonProps> = ({ keyList }) => (
+export const CrossButton: React.FC<CrossButtonProps> = () => (
   <>
     <div className="grid grid-cols-3 w-[120px] h-[120px]">
-      {keyList.map((key, index) => (
+      {["", "▲", "", "◀", "●", "▶", "", "▼", ""].map((key, index) => (
         <button
           key={index}
           data-testid={`${baseId}-${key}`}

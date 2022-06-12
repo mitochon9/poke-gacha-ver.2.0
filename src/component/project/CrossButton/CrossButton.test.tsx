@@ -14,37 +14,27 @@ describe("component/project/CrossButton", () => {
 
     it("▲ キーが正しく表示されていること", () => {
       render(<CrossButton {...props} />);
-      expect(
-        screen.getByTestId(`${baseId}-${props.keyList[1]}`)
-      ).toHaveTextContent("▲");
+      expect(screen.getByTestId(`${baseId}-▲`)).toHaveTextContent("▲");
     });
 
     it("◀ キーが正しく表示されていること", () => {
       render(<CrossButton {...props} />);
-      expect(
-        screen.getByTestId(`${baseId}-${props.keyList[3]}`)
-      ).toHaveTextContent("◀");
+      expect(screen.getByTestId(`${baseId}-◀`)).toHaveTextContent("◀");
     });
 
     it("▶ キーが正しく表示されていること", () => {
       render(<CrossButton {...props} />);
-      expect(
-        screen.getByTestId(`${baseId}-${props.keyList[5]}`)
-      ).toHaveTextContent("▶");
+      expect(screen.getByTestId(`${baseId}-▶`)).toHaveTextContent("▶");
     });
 
     it("▼ キーが正しく表示されていること", () => {
       render(<CrossButton {...props} />);
-      expect(
-        screen.getByTestId(`${baseId}-${props.keyList[7]}`)
-      ).toHaveTextContent("▼");
+      expect(screen.getByTestId(`${baseId}-▼`)).toHaveTextContent("▼");
     });
 
     it("● キーが正しく表示されていること", () => {
       render(<CrossButton {...props} />);
-      expect(
-        screen.getByTestId(`${baseId}-${props.keyList[4]}`)
-      ).toHaveTextContent("●");
+      expect(screen.getByTestId(`${baseId}-●`)).toHaveTextContent("●");
     });
   });
 });
