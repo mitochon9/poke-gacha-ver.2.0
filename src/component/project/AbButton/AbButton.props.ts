@@ -1,8 +1,11 @@
 import type { AbButtonProps } from "./AbButton.type";
 
 const defaultProps: AbButtonProps = {
-  setScreenType: () => {
-    alert("setScreen");
+  changeScreenA: () => {
+    alert("Click A");
+  },
+  changeScreenB: () => {
+    alert("Click B");
   },
 };
 
