@@ -61,19 +61,19 @@ export const Display: React.FC<DisplayProps> = ({
   };
 
   return (
-    <div className="flex relative justify-center items-center w-[375px] h-[375px] rounded-2xl border-x-[56px] border-t-[32px] border-b-[56px] border-gray-700">
+    <div className="flex relative justify-center items-center w-[343px] h-[359px] bg-amber-50 rounded-t-2xl rounded-b-[55px] border-x-[48px] border-t-[32px] border-b-[64px] border-gray-700">
       <Screen />
 
       <div
         data-testid={`${baseId}-power-supply`}
-        className="absolute top-16 left-[-46px]"
+        className="absolute top-16 left-[-42px]"
       >
         <PowerSupply />
       </div>
 
       <div
         data-testid={`${baseId}-game-boy-logo`}
-        className="flex absolute -bottom-12 left-1/2 justify-center w-full -translate-x-1/2"
+        className="flex absolute bottom-[-52px] left-1/2 justify-center w-full -translate-x-1/2"
       >
         <GameBoyLogo />
       </div>

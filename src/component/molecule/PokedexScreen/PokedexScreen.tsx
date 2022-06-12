@@ -12,7 +12,7 @@ export const PokedexScreen: React.FC<PokedexScreenProps> = ({
     <div
       ref={pokedexRef}
       data-testid={baseId}
-      className="overflow-auto py-2 w-[263px] h-[287px] font-dot"
+      className="overflow-auto py-2 w-[247px] h-[263px] font-dot"
     >
       <h2 className="text-xs text-center">つかまえたポケモン</h2>
       <div className="space-y-2">

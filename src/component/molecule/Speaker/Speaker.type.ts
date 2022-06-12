@@ -1,3 +1,1 @@
-export interface SpeakerProps {
-  volumeHole: number[];
-}
+export interface SpeakerProps {}

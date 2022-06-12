@@ -6,7 +6,7 @@ export const baseId = "molecule-result-screen";
 
 export const ResultScreen: React.FC<ResultScreenProps> = ({ pokemon }) => (
   <>
-    <div className="grid grid-cols-7 py-4 w-[263px] h-[287px] font-dot">
+    <div className="grid grid-cols-7 py-4 w-[247px] h-[263px] font-dot">
       <div className="flex col-span-3 justify-center items-center text-center">
         <div>
           <div>
