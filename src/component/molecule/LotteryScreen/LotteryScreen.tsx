@@ -9,7 +9,7 @@ export const LotteryScreen: React.FC<LotteryScreenProps> = () => (
   <>
     <div
       data-testid={baseId}
-      className="flex justify-center items-center w-[263px] h-[287px]"
+      className="flex justify-center items-center w-[247px] h-[263px]"
     >
       <Image
         src={monsterBallImage}

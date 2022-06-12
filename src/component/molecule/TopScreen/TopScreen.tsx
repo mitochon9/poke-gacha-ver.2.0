@@ -10,7 +10,7 @@ export const TopScreen: React.FC<TopScreenProps> = () => (
   <>
     <div
       data-testid={baseId}
-      className="flex justify-center items-center w-[263px] h-[287px] font-dot text-center"
+      className="flex justify-center items-center w-[247px] h-[263px] font-dot text-center"
     >
       <div className="space-y-1">
         <h1

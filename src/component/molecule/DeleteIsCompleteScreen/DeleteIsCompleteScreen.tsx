@@ -7,7 +7,7 @@ export const DeleteIsCompleteScreen: React.FC<
 > = () => (
   <div
     data-testid={baseId}
-    className="flex justify-center items-center w-[263px] h-[287px] font-dot"
+    className="flex justify-center items-center w-[247px] h-[263px] font-dot"
   >
     <div className="space-y-2 text-center">
       <h2>データ削除</h2>

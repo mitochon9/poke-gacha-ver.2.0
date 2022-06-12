@@ -14,30 +14,22 @@ describe("component/molecule/Speaker", () => {
 
     it("volumeHole の左上が 透明であること", () => {
       render(<Speaker {...props} />);
-      expect(
-        screen.getByTestId(`${baseId}-${props.volumeHole[0]}`)
-      ).toHaveClass("bg-transparent");
+      expect(screen.getByTestId(`${baseId}-1`)).toHaveClass("bg-transparent");
     });
   });
 
   it("volumeHole の右上が 透明であること", () => {
     render(<Speaker {...props} />);
-    expect(screen.getByTestId(`${baseId}-${props.volumeHole[7]}`)).toHaveClass(
-      "bg-transparent"
-    );
+    expect(screen.getByTestId(`${baseId}-8`)).toHaveClass("bg-transparent");
   });
 
   it("volumeHole の左下が 透明であること", () => {
     render(<Speaker {...props} />);
-    expect(screen.getByTestId(`${baseId}-${props.volumeHole[56]}`)).toHaveClass(
-      "bg-transparent"
-    );
+    expect(screen.getByTestId(`${baseId}-57`)).toHaveClass("bg-transparent");
   });
 });
 
 it("volumeHole の右上が 透明であること", () => {
   render(<Speaker {...props} />);
-  expect(screen.getByTestId(`${baseId}-${props.volumeHole[63]}`)).toHaveClass(
-    "bg-transparent"
-  );
+  expect(screen.getByTestId(`${baseId}-64`)).toHaveClass("bg-transparent");
 });
