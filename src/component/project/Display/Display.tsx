@@ -12,6 +12,7 @@ import type { DisplayProps } from "./Display.type";
 export const baseId = "project-display";
 
 export const Display: React.FC<DisplayProps> = ({
+  pokedexRef,
   pokemon,
   pokemonList,
   screenType,
@@ -39,7 +40,7 @@ export const Display: React.FC<DisplayProps> = ({
       case "pokedex":
         return (
           <div data-testid={`${baseId}-pokedex`}>
-            <PokedexScreen pokemonList={pokemonList} />
+            <PokedexScreen pokemonList={pokemonList} pokedexRef={pokedexRef} />
           </div>
         );
       case "deleteIsConfirm":

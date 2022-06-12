@@ -12,6 +12,8 @@ const AbButton: React.FC = () => {
     switch (screenType) {
       case "top":
         return lottery();
+      case "result":
+        return lottery();
       case "deleteIsConfirm":
         return setScreenType("deleteIsComplete");
       case "deleteIsComplete":

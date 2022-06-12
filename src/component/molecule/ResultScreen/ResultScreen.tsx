@@ -10,7 +10,12 @@ export const ResultScreen: React.FC<ResultScreenProps> = ({ pokemon }) => (
       <div className="flex col-span-3 justify-center items-center text-center">
         <div>
           <div>
-            <Image {...pokemon.image} alt={pokemon.image.alt} />
+            <Image
+              {...pokemon.image}
+              alt={pokemon.image.alt}
+              width={160}
+              height={160}
+            />
           </div>
           <p data-testid={`${baseId}-id`} className="text-xs">
             No.
@@ -22,7 +27,7 @@ export const ResultScreen: React.FC<ResultScreenProps> = ({ pokemon }) => (
       <div className="flex col-span-4 justify-center items-center text-xs leading-loose text-left">
         <div>
           <p data-testid={`${baseId}-name`}>{pokemon.name}</p>
-          <p data-testid={`${baseId}-type`}>{pokemon.type}</p>
+          <p data-testid={`${baseId}-genus`}>{pokemon.genus}</p>
           <p data-testid={`${baseId}-height`}>
             たかさ {(pokemon.height / 10).toFixed(1)}m
           </p>
@@ -42,7 +47,7 @@ export const ResultScreen: React.FC<ResultScreenProps> = ({ pokemon }) => (
           />
         ))}
       </div>
-      <div className="col-span-7 mt-[-18px] h-0 border-2 border-gray-700" />
+      <div className="col-span-7 mt-[-14px] h-0 border-2 border-gray-700" />
 
       <p
         data-testid={`${baseId}-commentary`}

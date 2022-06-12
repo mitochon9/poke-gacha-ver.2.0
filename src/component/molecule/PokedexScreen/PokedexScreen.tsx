@@ -5,10 +5,12 @@ import type { PokedexScreenProps } from "./PokedexScreen.type";
 export const baseId = "molecule-pokedex-screen";
 
 export const PokedexScreen: React.FC<PokedexScreenProps> = ({
+  pokedexRef,
   pokemonList,
 }) => (
   <>
     <div
+      ref={pokedexRef}
       data-testid={baseId}
       className="overflow-auto py-2 w-[263px] h-[287px] font-dot"
     >
