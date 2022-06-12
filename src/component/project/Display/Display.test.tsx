@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import { RecoilRoot } from "recoil";
 
 import { baseId, Display } from "./Display";
 import { propObj } from "./Display.props";
@@ -45,7 +46,11 @@ describe("component/project/Display", () => {
     });
 
     it("Result 画面が正しく表示されていること", () => {
-      render(<Display {...props} />);
+      render(
+        <RecoilRoot>
+          <Display {...props} />
+        </RecoilRoot>
+      );
       expect(screen.getByTestId(`${baseId}-result`)).toBeInTheDocument();
     });
   });

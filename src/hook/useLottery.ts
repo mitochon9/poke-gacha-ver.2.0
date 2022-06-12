@@ -1,27 +1,37 @@
 import axios from "axios";
+import { atom, useRecoilValue, useSetRecoilState } from "recoil";
 import { useScreen } from "src/hook/useScreen";
 import type { Pokemon } from "src/model/pokemon";
-import useSWR from "swr";
+import useSWRImmutable from "swr";
 
-interface UseLottery {
+interface UseSetLottery {
+  lotteryNumber: () => void;
   lottery: () => void;
+}
+
+interface UseLottery extends UseSetLottery {
   pokemon: Pokemon;
 }
+
+const winningNumberState = atom<number>({
+  key: "winningNumberState",
+  default: 1,
+});
 
 const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
 export const useLottery = (): UseLottery => {
-  const { setScreenType } = useScreen();
+  const winningNumber = useRecoilValue(winningNumberState);
 
-  const { data: data1 } = useSWR(
-    `https://pokeapi.co/api/v2/pokemon/4`,
+  const { data: data1 } = useSWRImmutable(
+    `https://pokeapi.co/api/v2/pokemon/${winningNumber}`,
     fetcher
   );
-  const { data: data2 } = useSWR(
-    `https://pokeapi.co/api/v2/pokemon-species/4`,
+  const { data: data2 } = useSWRImmutable(
+    `https://pokeapi.co/api/v2/pokemon-species/${winningNumber}`,
     fetcher
   );
-  const image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png`;
+  const image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${winningNumber}.png`;
 
   const pokemon: Pokemon = {
     image: {
@@ -36,13 +46,27 @@ export const useLottery = (): UseLottery => {
     commentary: data2?.flavor_text_entries[30]?.flavor_text,
   };
 
+  const setLottery = useSetLottery();
+
+  return { pokemon, ...setLottery };
+};
+
+const useSetLottery = (): UseSetLottery => {
+  const { setScreenType } = useScreen();
+  const setWinningNumber = useSetRecoilState(winningNumberState);
+
+  const lotteryNumber = () =>
+    setWinningNumber(Math.floor(Math.random() * (151 - 1)) + 1);
+
   const lottery = () => {
+    lotteryNumber();
     setScreenType("lottery");
+
     const timer = setTimeout(() => {
       setScreenType("result");
     }, 2000);
     return () => clearTimeout(timer);
   };
 
-  return { lottery, pokemon };
+  return { lottery, lotteryNumber };
 };

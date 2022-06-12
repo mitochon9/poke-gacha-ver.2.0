@@ -47,7 +47,7 @@ export const ResultScreen: React.FC<ResultScreenProps> = ({ pokemon }) => (
           />
         ))}
       </div>
-      <div className="col-span-7 mt-[-18px] h-0 border-2 border-gray-700" />
+      <div className="col-span-7 mt-[-14px] h-0 border-2 border-gray-700" />
 
       <p
         data-testid={`${baseId}-commentary`}
