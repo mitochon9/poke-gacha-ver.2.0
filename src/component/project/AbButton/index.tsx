@@ -1,3 +1,4 @@
+import { useLottery } from "src/hook/useLottery";
 import { useScreen } from "src/hook/useScreen";
 
 import { AbButton as AbButtonPresenter } from "./AbButton";
@@ -5,11 +6,12 @@ import type { AbButtonProps } from "./AbButton.type";
 
 const AbButton: React.FC = () => {
   const { screenType, setScreenType } = useScreen();
+  const { lottery } = useLottery();
 
   const changeScreenA = () => {
     switch (screenType) {
       case "top":
-        return setScreenType("lottery");
+        return lottery();
       case "deleteIsConfirm":
         return setScreenType("deleteIsComplete");
       case "deleteIsComplete":
@@ -20,7 +22,12 @@ const AbButton: React.FC = () => {
   };
 
   const changeScreenB = () => {
-    setScreenType("top");
+    switch (screenType) {
+      case "lottery":
+        break;
+      default:
+        return setScreenType("top");
+    }
   };
 
   const defaultProps: AbButtonProps = {
