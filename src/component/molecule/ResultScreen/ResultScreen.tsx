@@ -27,7 +27,7 @@ export const ResultScreen: React.FC<ResultScreenProps> = ({ pokemon }) => (
       <div className="flex col-span-4 justify-center items-center text-xs leading-loose text-left">
         <div>
           <p data-testid={`${baseId}-name`}>{pokemon.name}</p>
-          <p data-testid={`${baseId}-type`}>{pokemon.type}</p>
+          <p data-testid={`${baseId}-genus`}>{pokemon.genus}</p>
           <p data-testid={`${baseId}-height`}>
             たかさ {(pokemon.height / 10).toFixed(1)}m
           </p>

@@ -29,8 +29,8 @@ describe("component/molecule/ResultScreen", () => {
 
   it("ポケモンの種別が正しく表示されていること", () => {
     render(<ResultScreen {...props} />);
-    expect(screen.getByTestId(`${baseId}-type`)).toHaveTextContent(
-      props.pokemon.type
+    expect(screen.getByTestId(`${baseId}-genus`)).toHaveTextContent(
+      props.pokemon.genus
     );
   });
 

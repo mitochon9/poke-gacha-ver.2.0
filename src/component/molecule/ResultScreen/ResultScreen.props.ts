@@ -10,7 +10,7 @@ const defaultProps: ResultScreenProps = {
     },
     id: 4,
     name: "ヒトカゲ",
-    type: "とかげポケモン",
+    genus: "とかげポケモン",
     height: 6,
     weight: 85,
     commentary:

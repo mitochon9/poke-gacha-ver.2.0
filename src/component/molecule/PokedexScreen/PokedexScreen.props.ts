@@ -11,7 +11,7 @@ const defaultProps: PokedexScreenProps = {
       },
       id: 4,
       name: "ヒトカゲ",
-      type: "とかげポケモン",
+      genus: "とかげポケモン",
       height: 6,
       weight: 85,
       commentary:
@@ -24,7 +24,7 @@ const defaultProps: PokedexScreenProps = {
       },
       id: 4,
       name: "ヒトカゲ",
-      type: "とかげポケモン",
+      genus: "とかげポケモン",
       height: 6,
       weight: 85,
       commentary:
@@ -37,13 +37,14 @@ const defaultProps: PokedexScreenProps = {
       },
       id: 4,
       name: "ヒトカゲ",
-      type: "とかげポケモン",
+      genus: "とかげポケモン",
       height: 6,
       weight: 85,
       commentary:
         "ヒトカゲの しっぽの ほのおは いのちの ともしび。 げんきな ときは ほのおも ちからづよく もえあがる。",
     },
   ],
+  pokedexRef: null,
 };
 
 export const propObj: { [key: string]: PokedexScreenProps } = {

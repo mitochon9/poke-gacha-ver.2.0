@@ -11,7 +11,7 @@ const topProps: DisplayProps = {
     },
     id: 4,
     name: "ヒトカゲ",
-    type: "とかげポケモン",
+    genus: "とかげポケモン",
     height: 6,
     weight: 85,
     commentary:
@@ -25,7 +25,7 @@ const topProps: DisplayProps = {
       },
       id: 4,
       name: "ヒトカゲ",
-      type: "とかげポケモン",
+      genus: "とかげポケモン",
       height: 6,
       weight: 85,
       commentary:
@@ -38,7 +38,7 @@ const topProps: DisplayProps = {
       },
       id: 4,
       name: "ヒトカゲ",
-      type: "とかげポケモン",
+      genus: "とかげポケモン",
       height: 6,
       weight: 85,
       commentary:
@@ -51,13 +51,14 @@ const topProps: DisplayProps = {
       },
       id: 4,
       name: "ヒトカゲ",
-      type: "とかげポケモン",
+      genus: "とかげポケモン",
       height: 6,
       weight: 85,
       commentary:
         "ヒトカゲの しっぽの ほのおは いのちの ともしび。 げんきな ときは ほのおも ちからづよく もえあがる。",
     },
   ],
+  pokedexRef: null,
 };
 
 const lotteryProps: DisplayProps = {
@@ -69,7 +70,7 @@ const lotteryProps: DisplayProps = {
     },
     id: 4,
     name: "ヒトカゲ",
-    type: "とかげポケモン",
+    genus: "とかげポケモン",
     height: 6,
     weight: 85,
     commentary:
@@ -83,7 +84,7 @@ const lotteryProps: DisplayProps = {
       },
       id: 4,
       name: "ヒトカゲ",
-      type: "とかげポケモン",
+      genus: "とかげポケモン",
       height: 6,
       weight: 85,
       commentary:
@@ -96,7 +97,7 @@ const lotteryProps: DisplayProps = {
       },
       id: 4,
       name: "ヒトカゲ",
-      type: "とかげポケモン",
+      genus: "とかげポケモン",
       height: 6,
       weight: 85,
       commentary:
@@ -109,13 +110,14 @@ const lotteryProps: DisplayProps = {
       },
       id: 4,
       name: "ヒトカゲ",
-      type: "とかげポケモン",
+      genus: "とかげポケモン",
       height: 6,
       weight: 85,
       commentary:
         "ヒトカゲの しっぽの ほのおは いのちの ともしび。 げんきな ときは ほのおも ちからづよく もえあがる。",
     },
   ],
+  pokedexRef: null,
 };
 
 const resultProps: DisplayProps = {
@@ -127,7 +129,7 @@ const resultProps: DisplayProps = {
     },
     id: 4,
     name: "ヒトカゲ",
-    type: "とかげポケモン",
+    genus: "とかげポケモン",
     height: 6,
     weight: 85,
     commentary:
@@ -141,7 +143,7 @@ const resultProps: DisplayProps = {
       },
       id: 4,
       name: "ヒトカゲ",
-      type: "とかげポケモン",
+      genus: "とかげポケモン",
       height: 6,
       weight: 85,
       commentary:
@@ -154,7 +156,7 @@ const resultProps: DisplayProps = {
       },
       id: 4,
       name: "ヒトカゲ",
-      type: "とかげポケモン",
+      genus: "とかげポケモン",
       height: 6,
       weight: 85,
       commentary:
@@ -167,13 +169,14 @@ const resultProps: DisplayProps = {
       },
       id: 4,
       name: "ヒトカゲ",
-      type: "とかげポケモン",
+      genus: "とかげポケモン",
       height: 6,
       weight: 85,
       commentary:
         "ヒトカゲの しっぽの ほのおは いのちの ともしび。 げんきな ときは ほのおも ちからづよく もえあがる。",
     },
   ],
+  pokedexRef: null,
 };
 
 const pokedexProps: DisplayProps = {
@@ -185,7 +188,7 @@ const pokedexProps: DisplayProps = {
     },
     id: 4,
     name: "ヒトカゲ",
-    type: "とかげポケモン",
+    genus: "とかげポケモン",
     height: 6,
     weight: 85,
     commentary:
@@ -199,7 +202,7 @@ const pokedexProps: DisplayProps = {
       },
       id: 4,
       name: "ヒトカゲ",
-      type: "とかげポケモン",
+      genus: "とかげポケモン",
       height: 6,
       weight: 85,
       commentary:
@@ -212,7 +215,7 @@ const pokedexProps: DisplayProps = {
       },
       id: 4,
       name: "ヒトカゲ",
-      type: "とかげポケモン",
+      genus: "とかげポケモン",
       height: 6,
       weight: 85,
       commentary:
@@ -225,13 +228,14 @@ const pokedexProps: DisplayProps = {
       },
       id: 4,
       name: "ヒトカゲ",
-      type: "とかげポケモン",
+      genus: "とかげポケモン",
       height: 6,
       weight: 85,
       commentary:
         "ヒトカゲの しっぽの ほのおは いのちの ともしび。 げんきな ときは ほのおも ちからづよく もえあがる。",
     },
   ],
+  pokedexRef: null,
 };
 
 const deleteIsConfirmProps: DisplayProps = {
@@ -243,7 +247,7 @@ const deleteIsConfirmProps: DisplayProps = {
     },
     id: 4,
     name: "ヒトカゲ",
-    type: "とかげポケモン",
+    genus: "とかげポケモン",
     height: 6,
     weight: 85,
     commentary:
@@ -257,7 +261,7 @@ const deleteIsConfirmProps: DisplayProps = {
       },
       id: 4,
       name: "ヒトカゲ",
-      type: "とかげポケモン",
+      genus: "とかげポケモン",
       height: 6,
       weight: 85,
       commentary:
@@ -270,7 +274,7 @@ const deleteIsConfirmProps: DisplayProps = {
       },
       id: 4,
       name: "ヒトカゲ",
-      type: "とかげポケモン",
+      genus: "とかげポケモン",
       height: 6,
       weight: 85,
       commentary:
@@ -283,13 +287,14 @@ const deleteIsConfirmProps: DisplayProps = {
       },
       id: 4,
       name: "ヒトカゲ",
-      type: "とかげポケモン",
+      genus: "とかげポケモン",
       height: 6,
       weight: 85,
       commentary:
         "ヒトカゲの しっぽの ほのおは いのちの ともしび。 げんきな ときは ほのおも ちからづよく もえあがる。",
     },
   ],
+  pokedexRef: null,
 };
 
 const deleteIsCompleteProps: DisplayProps = {
@@ -301,7 +306,7 @@ const deleteIsCompleteProps: DisplayProps = {
     },
     id: 4,
     name: "ヒトカゲ",
-    type: "とかげポケモン",
+    genus: "とかげポケモン",
     height: 6,
     weight: 85,
     commentary:
@@ -315,7 +320,7 @@ const deleteIsCompleteProps: DisplayProps = {
       },
       id: 4,
       name: "ヒトカゲ",
-      type: "とかげポケモン",
+      genus: "とかげポケモン",
       height: 6,
       weight: 85,
       commentary:
@@ -328,7 +333,7 @@ const deleteIsCompleteProps: DisplayProps = {
       },
       id: 4,
       name: "ヒトカゲ",
-      type: "とかげポケモン",
+      genus: "とかげポケモン",
       height: 6,
       weight: 85,
       commentary:
@@ -341,13 +346,14 @@ const deleteIsCompleteProps: DisplayProps = {
       },
       id: 4,
       name: "ヒトカゲ",
-      type: "とかげポケモン",
+      genus: "とかげポケモン",
       height: 6,
       weight: 85,
       commentary:
         "ヒトカゲの しっぽの ほのおは いのちの ともしび。 げんきな ときは ほのおも ちからづよく もえあがる。",
     },
   ],
+  pokedexRef: null,
 };
 
 interface PropObj {
