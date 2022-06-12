@@ -5,7 +5,13 @@ export interface UseSetScreen {
 }
 
 export interface UseScreen extends UseSetScreen {
-  screenType: "top" | "lottery" | "result" | "pokedex" | "delete";
+  screenType:
+    | "top"
+    | "lottery"
+    | "result"
+    | "pokedex"
+    | "deleteIsConfirm"
+    | "deleteIsComplete";
 }
 
 const screenState = atom<UseScreen["screenType"]>({

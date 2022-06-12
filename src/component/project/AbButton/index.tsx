@@ -4,11 +4,30 @@ import { AbButton as AbButtonPresenter } from "./AbButton";
 import type { AbButtonProps } from "./AbButton.type";
 
 const AbButton: React.FC = () => {
-  const { setScreenType } = useScreen();
+  const { screenType, setScreenType } = useScreen();
+
+  const changeScreenA = () => {
+    switch (screenType) {
+      case "top":
+        return setScreenType("lottery");
+      case "deleteIsConfirm":
+        return setScreenType("deleteIsComplete");
+      case "deleteIsComplete":
+        return setScreenType("top");
+      default:
+        break;
+    }
+  };
+
+  const changeScreenB = () => {
+    setScreenType("top");
+  };
 
   const defaultProps: AbButtonProps = {
-    setScreenType,
+    changeScreenA,
+    changeScreenB,
   };
+
   return <AbButtonPresenter {...defaultProps} />;
 };
 

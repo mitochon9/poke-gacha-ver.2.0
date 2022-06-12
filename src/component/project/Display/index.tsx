@@ -63,7 +63,6 @@ const Display: React.FC = () => {
           "ヒトカゲの しっぽの ほのおは いのちの ともしび。 げんきな ときは ほのおも ちからづよく もえあがる。",
       },
     ],
-    isConfirm: false,
   };
   return <DisplayPresenter {...defaultProps} />;
 };

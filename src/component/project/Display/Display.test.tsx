@@ -61,14 +61,29 @@ describe("component/project/Display", () => {
     });
   });
 
-  describe("delete", () => {
+  describe("deleteIsConfirm", () => {
     beforeEach(() => {
       props = propObj.deleteIsConfirm;
     });
 
-    it("Delete 画面が正しく表示されていること", () => {
+    it("DeleteIsConfirm 画面が正しく表示されていること", () => {
       render(<Display {...props} />);
-      expect(screen.getByTestId(`${baseId}-delete`)).toBeInTheDocument();
+      expect(
+        screen.getByTestId(`${baseId}-delete-is-confirm`)
+      ).toBeInTheDocument();
+    });
+  });
+
+  describe("deleteIsComplete", () => {
+    beforeEach(() => {
+      props = propObj.deleteIsComplete;
+    });
+
+    it("DeleteIsComplete 画面が正しく表示されていること", () => {
+      render(<Display {...props} />);
+      expect(
+        screen.getByTestId(`${baseId}-delete-is-complete`)
+      ).toBeInTheDocument();
     });
   });
 });

@@ -1,4 +1,5 @@
-import { DeleteScreen } from "src/component/molecule/DeleteScreen";
+import { DeleteIsCompleteScreen } from "src/component/molecule/DeleteIsCompleteScreen";
+import { DeleteIsConfirmScreen } from "src/component/molecule/DeleteIsConfirmScreen";
 import { GameBoyLogo } from "src/component/molecule/GameBoyLogo";
 import { LotteryScreen } from "src/component/molecule/LotteryScreen";
 import { PokedexScreen } from "src/component/molecule/PokedexScreen";
@@ -11,7 +12,6 @@ import type { DisplayProps } from "./Display.type";
 export const baseId = "project-display";
 
 export const Display: React.FC<DisplayProps> = ({
-  isConfirm,
   pokemon,
   pokemonList,
   screenType,
@@ -42,10 +42,16 @@ export const Display: React.FC<DisplayProps> = ({
             <PokedexScreen pokemonList={pokemonList} />
           </div>
         );
-      case "delete":
+      case "deleteIsConfirm":
         return (
-          <div data-testid={`${baseId}-delete`}>
-            <DeleteScreen isConfirm={isConfirm} />
+          <div data-testid={`${baseId}-delete-is-confirm`}>
+            <DeleteIsConfirmScreen />
+          </div>
+        );
+      case "deleteIsComplete":
+        return (
+          <div data-testid={`${baseId}-delete-is-complete`}>
+            <DeleteIsCompleteScreen />
           </div>
         );
       default:
