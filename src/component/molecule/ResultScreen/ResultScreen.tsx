@@ -10,7 +10,12 @@ export const ResultScreen: React.FC<ResultScreenProps> = ({ pokemon }) => (
       <div className="flex col-span-3 justify-center items-center text-center">
         <div>
           <div>
-            <Image {...pokemon.image} alt={pokemon.image.alt} />
+            <Image
+              {...pokemon.image}
+              alt={pokemon.image.alt}
+              width={160}
+              height={160}
+            />
           </div>
           <p data-testid={`${baseId}-id`} className="text-xs">
             No.
