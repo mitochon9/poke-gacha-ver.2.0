@@ -1,27 +1,56 @@
 import axios from "axios";
-import { atom, useRecoilValue, useSetRecoilState } from "recoil";
+import {
+  atom,
+  useRecoilState,
+  useRecoilValue,
+  useSetRecoilState,
+} from "recoil";
 import { useScreen } from "src/hook/useScreen";
 import type { Pokemon } from "src/model/pokemon";
 import useSWRImmutable from "swr";
 
 interface UseSetLottery {
-  lotteryNumber: () => void;
   lottery: () => void;
 }
 
 interface UseLottery extends UseSetLottery {
   pokemon: Pokemon;
+  pokemonList: Pokemon[];
 }
 
 const winningNumberState = atom<number>({
-  key: "winningNumberState",
-  default: 1,
+  key: "winningNumber",
+  default: Math.floor(Math.random() * (151 - 1)) + 1,
+});
+
+const pokemonState = atom<Pokemon>({
+  key: "pokemonState",
+  default: undefined,
+});
+
+const pokemonListState = atom<Pokemon[]>({
+  key: "pokemonListState",
+  default: [],
 });
 
 const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
 export const useLottery = (): UseLottery => {
-  const winningNumber = useRecoilValue(winningNumberState);
+  const pokemon = useRecoilValue(pokemonState);
+  const pokemonList = useRecoilValue(pokemonListState);
+  const setLottery = useSetLottery();
+
+  return { pokemon, pokemonList, ...setLottery };
+};
+
+const useSetLottery = (): UseSetLottery => {
+  const { setScreenType } = useScreen();
+  const setPokemon = useSetRecoilState(pokemonState);
+  const [pokemonList, setPokemonList] = useRecoilState(pokemonListState);
+  const [winningNumber, setWinningNumber] = useRecoilState(winningNumberState);
+
+  const lotteryNumber = () =>
+    setWinningNumber(Math.floor(Math.random() * (151 - 1)) + 1);
 
   const { data: data1 } = useSWRImmutable(
     `https://pokeapi.co/api/v2/pokemon/${winningNumber}`,
@@ -46,21 +75,11 @@ export const useLottery = (): UseLottery => {
     commentary: data2?.flavor_text_entries[30]?.flavor_text,
   };
 
-  const setLottery = useSetLottery();
-
-  return { pokemon, ...setLottery };
-};
-
-const useSetLottery = (): UseSetLottery => {
-  const { setScreenType } = useScreen();
-  const setWinningNumber = useSetRecoilState(winningNumberState);
-
-  const lotteryNumber = () =>
-    setWinningNumber(Math.floor(Math.random() * (151 - 1)) + 1);
-
   const lottery = () => {
     lotteryNumber();
     setScreenType("lottery");
+    setPokemon(pokemon);
+    setPokemonList([...pokemonList, pokemon]);
 
     const timer = setTimeout(() => {
       setScreenType("result");
@@ -68,5 +87,5 @@ const useSetLottery = (): UseSetLottery => {
     return () => clearTimeout(timer);
   };
 
-  return { lottery, lotteryNumber };
+  return { lottery };
 };
