@@ -1,1 +1,4 @@
-export interface StartSelectButtonProps {}
+export interface StartSelectButtonProps {
+  changeScreenStart: () => void;
+  changeScreenSelect: () => void;
+}

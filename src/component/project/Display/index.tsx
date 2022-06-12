@@ -1,11 +1,14 @@
 import sampleImage from "public/img/hitokage.png";
+import { useScreen } from "src/hook/useScreen";
 
 import { Display as DisplayPresenter } from "./Display";
 import type { DisplayProps } from "./Display.type";
 
 const Display: React.FC = () => {
+  const { screenType } = useScreen();
+
   const defaultProps: DisplayProps = {
-    screenType: "top",
+    screenType,
     pokemon: {
       image: {
         src: sampleImage,
@@ -60,7 +63,6 @@ const Display: React.FC = () => {
           "ヒトカゲの しっぽの ほのおは いのちの ともしび。 げんきな ときは ほのおも ちからづよく もえあがる。",
       },
     ],
-    isConfirm: false,
   };
   return <DisplayPresenter {...defaultProps} />;
 };

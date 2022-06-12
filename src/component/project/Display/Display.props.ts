@@ -58,7 +58,6 @@ const topProps: DisplayProps = {
         "ヒトカゲの しっぽの ほのおは いのちの ともしび。 げんきな ときは ほのおも ちからづよく もえあがる。",
     },
   ],
-  isConfirm: false,
 };
 
 const lotteryProps: DisplayProps = {
@@ -117,7 +116,6 @@ const lotteryProps: DisplayProps = {
         "ヒトカゲの しっぽの ほのおは いのちの ともしび。 げんきな ときは ほのおも ちからづよく もえあがる。",
     },
   ],
-  isConfirm: false,
 };
 
 const resultProps: DisplayProps = {
@@ -176,7 +174,6 @@ const resultProps: DisplayProps = {
         "ヒトカゲの しっぽの ほのおは いのちの ともしび。 げんきな ときは ほのおも ちからづよく もえあがる。",
     },
   ],
-  isConfirm: false,
 };
 
 const pokedexProps: DisplayProps = {
@@ -235,11 +232,10 @@ const pokedexProps: DisplayProps = {
         "ヒトカゲの しっぽの ほのおは いのちの ともしび。 げんきな ときは ほのおも ちからづよく もえあがる。",
     },
   ],
-  isConfirm: false,
 };
 
 const deleteIsConfirmProps: DisplayProps = {
-  screenType: "delete",
+  screenType: "deleteIsConfirm",
   pokemon: {
     image: {
       src: sampleImage,
@@ -294,11 +290,10 @@ const deleteIsConfirmProps: DisplayProps = {
         "ヒトカゲの しっぽの ほのおは いのちの ともしび。 げんきな ときは ほのおも ちからづよく もえあがる。",
     },
   ],
-  isConfirm: true,
 };
 
 const deleteIsCompleteProps: DisplayProps = {
-  screenType: "delete",
+  screenType: "deleteIsComplete",
   pokemon: {
     image: {
       src: sampleImage,
@@ -353,7 +348,6 @@ const deleteIsCompleteProps: DisplayProps = {
         "ヒトカゲの しっぽの ほのおは いのちの ともしび。 げんきな ときは ほのおも ちからづよく もえあがる。",
     },
   ],
-  isConfirm: false,
 };
 
 interface PropObj {
