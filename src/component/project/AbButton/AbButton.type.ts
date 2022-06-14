@@ -1,4 +1,4 @@
 export interface AbButtonProps {
-  changeScreenA: () => void;
-  changeScreenB: () => void;
+  onAPush: () => void;
+  onBPush: () => void;
 }

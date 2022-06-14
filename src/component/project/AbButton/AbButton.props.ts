@@ -1,10 +1,10 @@
 import type { AbButtonProps } from "./AbButton.type";
 
 const defaultProps: AbButtonProps = {
-  changeScreenA: () => {
+  onAPush: () => {
     alert("Click A");
   },
-  changeScreenB: () => {
+  onBPush: () => {
     alert("Click B");
   },
 };
