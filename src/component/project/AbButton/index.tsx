@@ -10,7 +10,7 @@ const AbButton: React.FC = () => {
   const { screenType, setScreenType } = useScreen();
   const { lotteryNumber } = useLottery();
   const { pokemon } = usePokemon();
-  const { addPokemonList } = usePokemonList();
+  const { addPokemonList, deletePokemonList } = usePokemonList();
 
   const onAPush = () => {
     switch (screenType) {
@@ -27,6 +27,7 @@ const AbButton: React.FC = () => {
 
       case "deleteIsConfirm":
         setScreenType("deleteIsComplete");
+        deletePokemonList();
         break;
 
       case "deleteIsComplete":
