@@ -1,11 +1,10 @@
 import type { MutableRefObject } from "react";
-import type { PokedexScreenProps } from "src/component/molecule/PokedexScreen";
-import type { ResultScreenProps } from "src/component/molecule/ResultScreen";
 import type { UseScreen } from "src/hook/useScreen";
+import type { Pokemon } from "src/model/pokemon";
 
 export interface DisplayProps {
   screenType: UseScreen["screenType"];
-  pokemon: ResultScreenProps["pokemon"];
-  pokemonList: PokedexScreenProps["pokemonList"];
+  pokemon: Pokemon;
+  pokemonList: Pokemon[];
   pokedexRef: MutableRefObject<null> | null;
 }

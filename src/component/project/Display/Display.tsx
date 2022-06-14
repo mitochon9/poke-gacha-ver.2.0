@@ -25,36 +25,42 @@ export const Display: React.FC<DisplayProps> = ({
             <TopScreen />
           </div>
         );
+
       case "lottery":
         return (
           <div data-testid={`${baseId}-lottery`}>
             <LotteryScreen />
           </div>
         );
+
       case "result":
         return (
           <div data-testid={`${baseId}-result`}>
             <ResultScreen pokemon={pokemon} />
           </div>
         );
+
       case "pokedex":
         return (
           <div data-testid={`${baseId}-pokedex`}>
             <PokedexScreen pokemonList={pokemonList} pokedexRef={pokedexRef} />
           </div>
         );
+
       case "deleteIsConfirm":
         return (
           <div data-testid={`${baseId}-delete-is-confirm`}>
             <DeleteIsConfirmScreen />
           </div>
         );
+
       case "deleteIsComplete":
         return (
           <div data-testid={`${baseId}-delete-is-complete`}>
             <DeleteIsCompleteScreen />
           </div>
         );
+
       default:
         return null;
     }

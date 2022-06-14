@@ -1,4 +1,6 @@
 import { useLottery } from "src/hook/useLottery";
+import { usePokemon } from "src/hook/usePokemon";
+import { usePokemonList } from "src/hook/usePokemonList";
 import { useScreen } from "src/hook/useScreen";
 
 import { AbButton as AbButtonPresenter } from "./AbButton";
@@ -6,35 +8,49 @@ import type { AbButtonProps } from "./AbButton.type";
 
 const AbButton: React.FC = () => {
   const { screenType, setScreenType } = useScreen();
-  const { lottery } = useLottery();
+  const { lotteryNumber } = useLottery();
+  const { pokemon } = usePokemon();
+  const { addPokemonList } = usePokemonList();
 
-  const changeScreenA = () => {
+  const onAPush = () => {
     switch (screenType) {
       case "top":
-        return lottery();
       case "result":
-        return lottery();
+        setScreenType("lottery");
+        lotteryNumber();
+        addPokemonList(pokemon);
+        const timer = setTimeout(() => {
+          setScreenType("result");
+        }, 2000);
+        () => clearTimeout(timer);
+        break;
+
       case "deleteIsConfirm":
-        return setScreenType("deleteIsComplete");
+        setScreenType("deleteIsComplete");
+        break;
+
       case "deleteIsComplete":
-        return setScreenType("top");
+        setScreenType("top");
+        break;
+
       default:
         break;
     }
   };
 
-  const changeScreenB = () => {
+  const onBPush = () => {
     switch (screenType) {
       case "lottery":
         break;
       default:
-        return setScreenType("top");
+        setScreenType("top");
+        break;
     }
   };
 
   const defaultProps: AbButtonProps = {
-    changeScreenA,
-    changeScreenB,
+    onAPush,
+    onBPush,
   };
 
   return <AbButtonPresenter {...defaultProps} />;
