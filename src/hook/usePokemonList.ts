@@ -3,6 +3,7 @@ import type { Pokemon } from "src/model/pokemon";
 
 interface UseSetPokemonList {
   addPokemonList: (pokemon: Pokemon) => void;
+  deletePokemonList: () => void;
 }
 
 interface UsePokemonList extends UseSetPokemonList {
@@ -47,5 +48,12 @@ const useSetPokemonList = (): UseSetPokemonList => {
     });
   };
 
-  return { addPokemonList };
+  const deletePokemonList = () => {
+    setPokemonList(() => {
+      localStorage.removeItem("pokemonList");
+      return [];
+    });
+  };
+
+  return { addPokemonList, deletePokemonList };
 };
