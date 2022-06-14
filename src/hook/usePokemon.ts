@@ -1,16 +1,55 @@
 import axios from "axios";
+import { atom, useRecoilValue, useSetRecoilState } from "recoil";
 import { useLottery } from "src/hook/useLottery";
 import type { Pokemon } from "src/model/pokemon";
 import useSWRImmutable from "swr";
 
-interface UsePokemon {
-  pokemon: Pokemon;
+interface UseSetPokemon {
+  addPokemon: () => void;
+  deletePokemonList: () => void;
 }
+interface UsePokemon extends UseSetPokemon {
+  pokemon: Pokemon;
+  pokemonList: Pokemon[];
+}
+
+const pokemonState = atom<Pokemon>({
+  key: "pokemon",
+  default: undefined,
+});
+
+const pokemonListState = atom<Pokemon[]>({
+  key: "pokemonList",
+  default: [],
+  effects: [
+    ({ setSelf }) => {
+      const fetchData = () => {
+        if (typeof window !== "undefined") {
+          const pokemonListStorage = localStorage.getItem("pokemonList");
+          pokemonListStorage
+            ? setSelf(JSON.parse(pokemonListStorage))
+            : setSelf([]);
+        }
+      };
+      fetchData();
+    },
+  ],
+});
 
 const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
 export const usePokemon = (): UsePokemon => {
+  const pokemon = useRecoilValue(pokemonState);
+  const pokemonList = useRecoilValue(pokemonListState);
+  const setPokemon = useSetPokemon();
+
+  return { pokemon, pokemonList, ...setPokemon };
+};
+
+const useSetPokemon = (): UseSetPokemon => {
   const { winningNumber } = useLottery();
+  const setPokemon = useSetRecoilState(pokemonState);
+  const setPokemonList = useSetRecoilState(pokemonListState);
 
   const { data: data1 } = useSWRImmutable(
     `https://pokeapi.co/api/v2/pokemon/${winningNumber}`,
@@ -35,5 +74,23 @@ export const usePokemon = (): UsePokemon => {
     commentary: data2?.flavor_text_entries[30]?.flavor_text,
   };
 
-  return { pokemon };
+  const addPokemon = (): void => {
+    setPokemon(pokemon);
+    setPokemonList((prevPokemonList) => {
+      localStorage.setItem(
+        "pokemonList",
+        JSON.stringify([...prevPokemonList, pokemon])
+      );
+      return [...prevPokemonList, pokemon];
+    });
+  };
+
+  const deletePokemonList = () => {
+    setPokemonList(() => {
+      localStorage.removeItem("pokemonList");
+      return [];
+    });
+  };
+
+  return { addPokemon, deletePokemonList };
 };

@@ -1,6 +1,5 @@
 import { useLottery } from "src/hook/useLottery";
 import { usePokemon } from "src/hook/usePokemon";
-import { usePokemonList } from "src/hook/usePokemonList";
 import { useScreen } from "src/hook/useScreen";
 
 import { AbButton as AbButtonPresenter } from "./AbButton";
@@ -9,8 +8,7 @@ import type { AbButtonProps } from "./AbButton.type";
 const AbButton: React.FC = () => {
   const { screenType, setScreenType } = useScreen();
   const { lotteryNumber } = useLottery();
-  const { pokemon } = usePokemon();
-  const { addPokemonList, deletePokemonList } = usePokemonList();
+  const { addPokemon, deletePokemonList } = usePokemon();
 
   const onAPush = () => {
     switch (screenType) {
@@ -18,7 +16,7 @@ const AbButton: React.FC = () => {
       case "result":
         setScreenType("lottery");
         lotteryNumber();
-        addPokemonList(pokemon);
+        addPokemon();
         const timer = setTimeout(() => {
           setScreenType("result");
         }, 2000);
