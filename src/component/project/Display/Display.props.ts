@@ -58,7 +58,6 @@ const topProps: DisplayProps = {
         "ヒトカゲの しっぽの ほのおは いのちの ともしび。 げんきな ときは ほのおも ちからづよく もえあがる。",
     },
   ],
-  pokedexRef: null,
 };
 
 const lotteryProps: DisplayProps = {
@@ -117,7 +116,6 @@ const lotteryProps: DisplayProps = {
         "ヒトカゲの しっぽの ほのおは いのちの ともしび。 げんきな ときは ほのおも ちからづよく もえあがる。",
     },
   ],
-  pokedexRef: null,
 };
 
 const resultProps: DisplayProps = {
@@ -176,7 +174,6 @@ const resultProps: DisplayProps = {
         "ヒトカゲの しっぽの ほのおは いのちの ともしび。 げんきな ときは ほのおも ちからづよく もえあがる。",
     },
   ],
-  pokedexRef: null,
 };
 
 const pokedexProps: DisplayProps = {
@@ -235,7 +232,6 @@ const pokedexProps: DisplayProps = {
         "ヒトカゲの しっぽの ほのおは いのちの ともしび。 げんきな ときは ほのおも ちからづよく もえあがる。",
     },
   ],
-  pokedexRef: null,
 };
 
 const deleteIsConfirmProps: DisplayProps = {
@@ -294,7 +290,6 @@ const deleteIsConfirmProps: DisplayProps = {
         "ヒトカゲの しっぽの ほのおは いのちの ともしび。 げんきな ときは ほのおも ちからづよく もえあがる。",
     },
   ],
-  pokedexRef: null,
 };
 
 const deleteIsCompleteProps: DisplayProps = {
@@ -353,7 +348,6 @@ const deleteIsCompleteProps: DisplayProps = {
         "ヒトカゲの しっぽの ほのおは いのちの ともしび。 げんきな ときは ほのおも ちからづよく もえあがる。",
     },
   ],
-  pokedexRef: null,
 };
 
 interface PropObj {

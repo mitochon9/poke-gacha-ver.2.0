@@ -44,7 +44,6 @@ const defaultProps: PokedexScreenProps = {
         "ヒトカゲの しっぽの ほのおは いのちの ともしび。 げんきな ときは ほのおも ちからづよく もえあがる。",
     },
   ],
-  pokedexRef: null,
 };
 
 export const propObj: { [key: string]: PokedexScreenProps } = {

@@ -6,27 +6,31 @@ import type { StartSelectButtonProps } from "./StartSelectButton.type";
 const StartSelectButton: React.FC = () => {
   const { screenType, setScreenType } = useScreen();
 
-  const changeScreenStart = () => {
+  const onStartPush = () => {
     switch (screenType) {
       case "top":
-        return setScreenType("deleteIsConfirm");
+        setScreenType("deleteIsConfirm");
+        break;
+
       default:
         break;
     }
   };
 
-  const changeScreenSelect = () => {
+  const onSelectPush = () => {
     switch (screenType) {
       case "top":
-        return setScreenType("pokedex");
+        setScreenType("pokedex");
+        break;
+
       default:
         break;
     }
   };
 
   const defaultProps: StartSelectButtonProps = {
-    changeScreenStart,
-    changeScreenSelect,
+    onStartPush,
+    onSelectPush,
   };
   return <StartSelectButtonPresenter {...defaultProps} />;
 };

@@ -2,13 +2,23 @@ import type { CrossButtonProps } from "./CrossButton.type";
 
 export const baseId = "project-cross-button";
 
-export const CrossButton: React.FC<CrossButtonProps> = () => (
+export const CrossButton: React.FC<CrossButtonProps> = ({
+  scrollDown,
+  scrollUp,
+}) => (
   <>
     <div className="grid grid-cols-3 w-[120px] h-[120px]">
       {["", "▲", "", "◀", "●", "▶", "", "▼", ""].map((key, index) => (
         <button
           key={index}
           data-testid={`${baseId}-${key}`}
+          onClick={
+            key === "▲"
+              ? scrollUp
+              : key === "▼"
+              ? scrollDown
+              : (e) => e.preventDefault()
+          }
           className={`w-10 h-10
         ${
           key === ""
