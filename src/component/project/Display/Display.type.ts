@@ -5,5 +5,5 @@ export interface DisplayProps {
   screenType: UseScreen["screenType"];
   pokemon: Pokemon;
   pokemonList: Pokemon[];
-  pokedexRef?: (node: Element) => void;
+  pokedexRef?: (node: any) => void;
 }

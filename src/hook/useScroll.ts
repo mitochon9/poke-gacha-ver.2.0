@@ -3,7 +3,7 @@ import { atom, useRecoilState } from "recoil";
 import { usePokemon } from "src/hook/usePokemon";
 
 export interface UseScroll {
-  pokedexRef: (node: Element) => void;
+  pokedexRef: (node: any) => void;
   scrollUp: () => void;
   scrollDown: () => void;
   resetScroll: () => void;
@@ -24,7 +24,7 @@ export const useScroll = (): UseScroll => {
   const pokedexHeight = 24 + pokemonList.length * 275 - 263;
 
   const pokedexRef = useCallback(
-    (node: Element) => {
+    (node: any) => {
       if (node !== null) {
         node?.scrollTo({ top: currentHeight });
       }
