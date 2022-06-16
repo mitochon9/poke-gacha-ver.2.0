@@ -7,6 +7,12 @@ const defaultProps: CrossButtonProps = {
   scrollDown: () => {
     alert("scrollDown");
   },
+  switchColor: () => {
+    alert("switchColor");
+  },
+  reverseSwitchColor: () => {
+    alert("reverseSwitchColor");
+  },
 };
 
 export const propObj: { [key: string]: CrossButtonProps } = {

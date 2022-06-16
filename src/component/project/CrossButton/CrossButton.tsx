@@ -3,8 +3,10 @@ import type { CrossButtonProps } from "./CrossButton.type";
 export const baseId = "project-cross-button";
 
 export const CrossButton: React.FC<CrossButtonProps> = ({
+  reverseSwitchColor,
   scrollDown,
   scrollUp,
+  switchColor,
 }) => (
   <>
     <div className="grid grid-cols-3 w-[120px] h-[120px]">
@@ -17,6 +19,10 @@ export const CrossButton: React.FC<CrossButtonProps> = ({
               ? scrollUp
               : key === "▼"
               ? scrollDown
+              : key === "◀"
+              ? reverseSwitchColor
+              : key === "▶"
+              ? switchColor
               : (e) => e.preventDefault()
           }
           className={`w-10 h-10
