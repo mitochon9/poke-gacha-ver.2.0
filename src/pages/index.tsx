@@ -15,25 +15,38 @@ export const baseId = "page-home";
 export const Home = () => (
   <>
     <div className="flex relative flex-col justify-between px-8 pt-4 pb-20 mx-auto min-w-[375px] max-w-[414px] bg-[#C83031] rounded-t-xl rounded-b-[40px]">
-      <div className="flex justify-center">
+      <div data-testid={`${baseId}-display`} className="flex justify-center">
         <Display />
       </div>
 
-      <div className="flex justify-center mt-4">
+      <div
+        data-testid={`${baseId}-nintendo-logo`}
+        className="flex justify-center mt-4"
+      >
         <NintendoLogo />
       </div>
 
       <div className="flex justify-between mt-8">
-        <CrossButton />
+        <div data-testid={`${baseId}-cross-button`}>
+          <CrossButton />
+        </div>
 
-        <AbButton />
+        <div data-testid={`${baseId}-A-B-button`}>
+          <AbButton />
+        </div>
       </div>
 
-      <div className="flex justify-center mt-8">
+      <div
+        data-testid={`${baseId}-start-select-button`}
+        className="flex justify-center mt-8"
+      >
         <StartSelectButton />
       </div>
 
-      <div className="absolute right-4 bottom-4">
+      <div
+        data-testid={`${baseId}-speaker`}
+        className="absolute right-4 bottom-4"
+      >
         <Speaker />
       </div>
     </div>
