@@ -1,10 +1,10 @@
 import type { StartSelectButtonProps } from "./StartSelectButton.type";
 
 const defaultProps: StartSelectButtonProps = {
-  changeScreenStart: () => {
+  onStartPush: () => {
     alert("Click Start");
   },
-  changeScreenSelect: () => {
+  onSelectPush: () => {
     alert("Click Select");
   },
 };

@@ -1,4 +1,4 @@
 export interface StartSelectButtonProps {
-  changeScreenStart: () => void;
-  changeScreenSelect: () => void;
+  onStartPush: () => void;
+  onSelectPush: () => void;
 }
