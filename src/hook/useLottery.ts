@@ -10,7 +10,7 @@ interface UseLottery extends UseSetLottery {
 
 const winningNumberState = atom<number>({
   key: "winningNumber",
-  default: Math.floor(Math.random() * (151 - 1)) + 1,
+  default: 1,
 });
 
 export const useLottery = (): UseLottery => {
