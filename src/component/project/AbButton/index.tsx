@@ -9,7 +9,7 @@ import type { AbButtonProps } from "./AbButton.type";
 const AbButton: React.FC = () => {
   const { screenType, setScreenType } = useScreen();
   const { lotteryNumber } = useLottery();
-  const { addPokemon, deletePokemonList } = usePokemon();
+  const { addPokemon, addPokemonList, deletePokemonList } = usePokemon();
   const { resetScroll } = useScroll();
 
   const onAPush = () => {
@@ -19,6 +19,7 @@ const AbButton: React.FC = () => {
         setScreenType("animation");
         lotteryNumber();
         addPokemon();
+        addPokemonList();
         const timer = setTimeout(() => {
           setScreenType("result");
         }, 2000);

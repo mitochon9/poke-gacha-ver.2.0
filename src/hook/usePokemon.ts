@@ -6,6 +6,7 @@ import useSWRImmutable from "swr";
 
 interface UseSetPokemon {
   addPokemon: () => void;
+  addPokemonList: () => void;
   deletePokemonList: () => void;
 }
 interface UsePokemon extends UseSetPokemon {
@@ -76,6 +77,9 @@ const useSetPokemon = (): UseSetPokemon => {
 
   const addPokemon = (): void => {
     setPokemon(pokemon);
+  };
+
+  const addPokemonList = (): void => {
     setPokemonList((prevPokemonList) => {
       localStorage.setItem(
         "pokemonList",
@@ -92,5 +96,5 @@ const useSetPokemon = (): UseSetPokemon => {
     });
   };
 
-  return { addPokemon, deletePokemonList };
+  return { addPokemon, addPokemonList, deletePokemonList };
 };

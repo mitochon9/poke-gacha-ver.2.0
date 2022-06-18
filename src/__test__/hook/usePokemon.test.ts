@@ -29,23 +29,12 @@ describe("useScreen", () => {
     expect(result.current.pokemon).not.toEqual(undefined);
   });
 
-  it("addPokemon() を呼び出した時、 pokemon が undefined ではないこと", () => {
+  it("addPokemonList() を呼び出した時、 pokemonList が空ではないこと", () => {
     const { result } = renderHook(() => usePokemon(), {
       wrapper: RecoilRoot,
     });
     act(() => {
-      result.current.addPokemon();
-    });
-
-    expect(result.current.pokemon).not.toEqual(undefined);
-  });
-
-  it("addPokemon() を呼び出した時、 pokemonList が空ではないこと", () => {
-    const { result } = renderHook(() => usePokemon(), {
-      wrapper: RecoilRoot,
-    });
-    act(() => {
-      result.current.addPokemon();
+      result.current.addPokemonList();
     });
 
     expect(result.current.pokemonList).not.toEqual([]);
