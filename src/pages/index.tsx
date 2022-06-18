@@ -43,7 +43,7 @@ export const Home = () => {
             <CrossButton />
           </div>
 
-          <div data-testid={`${baseId}-A-B-button`}>
+          <div data-testid={`${baseId}-A-B-button`} className="mt-4">
             <AbButton />
           </div>
         </div>
