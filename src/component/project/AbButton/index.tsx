@@ -16,7 +16,7 @@ const AbButton: React.FC = () => {
     switch (screenType) {
       case "top":
       case "result":
-        setScreenType("lottery");
+        setScreenType("animation");
         lotteryNumber();
         addPokemon();
         const timer = setTimeout(() => {
@@ -41,7 +41,7 @@ const AbButton: React.FC = () => {
 
   const onBPush = () => {
     switch (screenType) {
-      case "lottery":
+      case "animation":
         break;
       case "pokedex":
         setScreenType("top");

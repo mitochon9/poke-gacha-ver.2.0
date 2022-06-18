@@ -26,9 +26,9 @@ export const Display: React.FC<DisplayProps> = ({
           </div>
         );
 
-      case "lottery":
+      case "animation":
         return (
-          <div data-testid={`${baseId}-lottery`}>
+          <div data-testid={`${baseId}-animation`}>
             <LotteryScreen />
           </div>
         );

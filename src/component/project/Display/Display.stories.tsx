@@ -14,8 +14,8 @@ const Template: Story<DisplayProps> = (args) => <Display {...args} />;
 export const Top = Template.bind({});
 Top.args = propObj.top;
 
-export const Lottery = Template.bind({});
-Lottery.args = propObj.lottery;
+export const Animation = Template.bind({});
+Animation.args = propObj.animation;
 
 export const Result = Template.bind({});
 Result.args = propObj.result;

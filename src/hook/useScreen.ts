@@ -7,7 +7,7 @@ export interface UseSetScreen {
 export interface UseScreen extends UseSetScreen {
   screenType:
     | "top"
-    | "lottery"
+    | "animation"
     | "result"
     | "pokedex"
     | "deleteIsConfirm"

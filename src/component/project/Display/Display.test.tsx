@@ -29,14 +29,14 @@ describe("component/project/Display", () => {
     });
   });
 
-  describe("lottery", () => {
+  describe("animation", () => {
     beforeEach(() => {
-      props = propObj.lottery;
+      props = propObj.animation;
     });
 
     it("Lottery 画面が正しく表示されていること", () => {
       render(<Display {...props} />);
-      expect(screen.getByTestId(`${baseId}-lottery`)).toBeInTheDocument();
+      expect(screen.getByTestId(`${baseId}-animation`)).toBeInTheDocument();
     });
   });
 

@@ -60,8 +60,8 @@ const topProps: DisplayProps = {
   ],
 };
 
-const lotteryProps: DisplayProps = {
-  screenType: "lottery",
+const animationProps: DisplayProps = {
+  screenType: "animation",
   pokemon: {
     image: {
       src: sampleImage,
@@ -352,7 +352,7 @@ const deleteIsCompleteProps: DisplayProps = {
 
 interface PropObj {
   top: DisplayProps;
-  lottery: DisplayProps;
+  animation: DisplayProps;
   result: DisplayProps;
   pokedex: DisplayProps;
   deleteIsConfirm: DisplayProps;
@@ -361,7 +361,7 @@ interface PropObj {
 
 export const propObj: PropObj = {
   top: topProps,
-  lottery: lotteryProps,
+  animation: animationProps,
   result: resultProps,
   pokedex: pokedexProps,
   deleteIsConfirm: deleteIsConfirmProps,
