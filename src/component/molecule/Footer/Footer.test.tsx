@@ -15,7 +15,7 @@ describe("component/molecule/Footer", () => {
     it("コピーライトが表示されていること", () => {
       render(<Footer {...props} />);
       expect(screen.getByTestId(`${baseId}-copy`)).toHaveTextContent(
-        "©2022 たかはし"
+        "©2021 たかはし"
       );
     });
   });
