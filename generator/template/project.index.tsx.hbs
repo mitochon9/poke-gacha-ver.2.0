@@ -1,0 +1,18 @@
+import { {{pascalCase name}} as {{pascalCase name}}Presenter } from './{{pascalCase name}}';
+import { {{pascalCase name}}Props } from './{{pascalCase name}}.type';
+
+/**
+ * ロジックが存在しない（= Container が要らない）場合は 以下と置き換えてください。
+ * 存在する場合はコメントアウト部分を全て削除して使ってください。
+ */
+/* 
+export type { {{pascalCase name}}Props };
+export { {{pascalCase name}}Presenter};
+*/
+
+const {{pascalCase name}}: React.FC = () => {
+  const defaultProps: {{pascalCase name}}Props = {};
+  return <{{pascalCase name}}Presenter {...defaultProps} />;
+};
+
+export { {{pascalCase name}} };

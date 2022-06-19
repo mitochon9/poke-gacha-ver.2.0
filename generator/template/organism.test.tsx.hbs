@@ -1,0 +1,20 @@
+import { render, screen } from '@testing-library/react';
+import { {{pascalCase name}}, baseId } from './{{pascalCase name}}';
+import { propObj } from './{{pascalCase name}}.props';
+import { {{pascalCase name}}Props } from './{{pascalCase name}}.type';
+
+let props: {{pascalCase name}}Props;
+
+describe('component/{{atomic}}/{{pascalCase name}}', () => {
+  describe('default', () => {
+    beforeEach(() => {
+      props = propObj.default;
+    });
+
+    it('component/{{atomic}}/{{pascalCase name}} のテストケースを書くこと', () => {
+      render(<{{pascalCase name}} {...props} />);
+      expect(screen.getByTestId(baseId)).toBeInTheDocument();
+
+    });
+  });
+});
