@@ -44,6 +44,8 @@
 
 ## ユースケース図
 
+GitHub でユースケース図を閲覧するには GoogleChrome 拡張機能の [Pegmatite](https://chrome.google.com/webstore/detail/pegmatite/jegkfbnfbfnohncpcfcimepibmhlkldo) が必要です。
+
 ```plantuml
 @startuml useCase
 left to right direction
