@@ -1,3 +1,4 @@
+import { Footer } from "src/component/molecule/Footer";
 import { NintendoLogo } from "src/component/molecule/NintendoLogo";
 import { Speaker } from "src/component/molecule/Speaker";
 import { AbButton } from "src/component/project/AbButton";
@@ -62,6 +63,8 @@ export const Home = () => {
           <Speaker />
         </div>
       </div>
+
+      <Footer />
     </>
   );
 };
