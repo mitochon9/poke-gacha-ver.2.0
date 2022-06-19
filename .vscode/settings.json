@@ -18,6 +18,7 @@
     "analyse",
     "automerge",
     "Compat",
+    "enduml",
     "headlessui",
     "hitokage",
     "kalam",
@@ -26,8 +27,13 @@
     "msapplication",
     "nexst",
     "pathpida",
+    "plantuml",
     "Pokédex",
+    "Qiita",
+    "startuml",
     "tailwindcss",
+    "typeof",
+    "usecase",
     "viewports"
   ]
 }
