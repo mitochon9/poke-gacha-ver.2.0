@@ -5,29 +5,37 @@ package APPLICATION {
 actor ユーザー as user
 
   usecase "トップ画面に戻る" as backToTop
-  usecase "アニメーション" as animation
-  usecase "PokeAPI を叩いて結果表示" as result
-  usecase "ポケモン図鑑を開く" as pokedex
-  usecase "削除確認画面" as confirm
-  usecase "削除完了画面（localStorage のデータ削除）" as delete
-  usecase "画面スクロール" as scroll
-  usecase "ゲームボーイ本体の色変更" as changeColor
 
-  user --> animation: A ボタンを押す
-  animation --> result: ２秒後に結果表示画面を表示
-  result --> animation: A ボタンを押す
-  result --> backToTop: B ボタンを押す
+  package ガチャ {
+    usecase "アニメーション" as animation
+    usecase "PokeAPI を叩いて結果表示" as result
+    user --> animation: A ボタンを押す
+    animation --> result: ２秒後に結果表示画面を表示
+    result --> animation: A ボタンを押す
+    result --> backToTop: B ボタンを押す
+  }
 
-  user --> pokedex: Select ボタンを押す
-  pokedex --- scroll : 十字キーの ▲ か ▼ を押す
-  pokedex --> backToTop: B ボタンを押す
+  package ポケモン図鑑 {
+    usecase "ポケモン図鑑を開く" as pokedex
+    usecase "画面スクロール" as scroll
+    user --> pokedex: Select ボタンを押す
+    pokedex --- scroll : 十字キーの ▲ か ▼ を押す
+    pokedex --> backToTop: B ボタンを押す
+  }
 
-  user --> confirm: Start ボタンを押す
-  confirm --> delete: A ボタンを押す
-  confirm --> backToTop: B ボタンを押す
-  delete --> backToTop: A or B ボタンを押す
+  package localStorage削除 {
+    usecase "削除確認画面" as confirm
+    usecase "削除完了画面（localStorage のデータ削除）" as delete
+    user --> confirm: Start ボタンを押す
+    confirm --> delete: A ボタンを押す
+    confirm --> backToTop: B ボタンを押す
+    delete --> backToTop: A or B ボタンを押す
+  }
 
-  user --- changeColor: 十字キーの ◀ か ▶ を押す
+  package ゲームボーイ本体の色変更 {
+    usecase "ゲームボーイ本体の色変更" as changeColor
+    user --- changeColor: 十字キーの ◀ か ▶ を押す
+  }
 
 }
 @enduml
