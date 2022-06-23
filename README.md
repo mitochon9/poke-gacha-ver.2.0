@@ -58,7 +58,7 @@ actor ユーザー as user
 
   package ガチャ {
     usecase "アニメーション" as animation
-    usecase "PokeAPI を叩いて結果表示" as result
+    usecase "PokeAPI からデータ取得し表示（ localStorage にデータ保存）" as result
     user --> animation: A ボタンを押す
     animation --> result: ２秒後に結果表示画面を表示
     result --> animation: A ボタンを押す
@@ -66,7 +66,7 @@ actor ユーザー as user
   }
 
   package ポケモン図鑑 {
-    usecase "ポケモン図鑑を開く" as pokedex
+    usecase "localStorage に保存されたデータ表示" as pokedex
     usecase "画面スクロール" as scroll
     user --> pokedex: Select ボタンを押す
     pokedex --- scroll : 十字キーの ▲ か ▼ を押す
@@ -75,7 +75,7 @@ actor ユーザー as user
 
   package localStorage削除 {
     usecase "削除確認画面" as confirm
-    usecase "削除完了画面（localStorage のデータ削除）" as delete
+    usecase "削除完了画面（ localStorage のデータ削除）" as delete
     user --> confirm: Start ボタンを押す
     confirm --> delete: A ボタンを押す
     confirm --> backToTop: B ボタンを押す
