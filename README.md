@@ -16,7 +16,7 @@
 
 保守性と可読性の面に関して今後もアップデートしていきたいと考えています。
 
-2 終了時のリポジトリは[こちら](https://github.com/mitochon9/poke-gacha-ver.2.0)です。
+2 終了時のリポジトリは[こちら](https://github.com/mitochon9/poke-gacha-ver.2.0)です。（なんてカオスなコードなんだ…）
 
 ## 目的
 
