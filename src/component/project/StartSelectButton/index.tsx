@@ -1,10 +1,12 @@
 import { useScreen } from "src/hook/useScreen";
+import { useScroll } from "src/hook/useScroll";
 
 import { StartSelectButton as StartSelectButtonPresenter } from "./StartSelectButton";
 import type { StartSelectButtonProps } from "./StartSelectButton.type";
 
 const StartSelectButton: React.FC = () => {
   const { screenType, setScreenType } = useScreen();
+  const { resetScroll } = useScroll();
 
   const onStartPush = () => {
     switch (screenType) {
@@ -21,6 +23,7 @@ const StartSelectButton: React.FC = () => {
     switch (screenType) {
       case "top":
         setScreenType("pokedex");
+        resetScroll();
         break;
 
       default:
