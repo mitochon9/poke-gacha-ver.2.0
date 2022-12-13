@@ -1,4 +1,8 @@
 import Document, { Head, Html, Main, NextScript } from "next/document";
+import type { GoogleTagManagerId } from "src/component/Gtm";
+import GoogleTagManager from "src/component/Gtm";
+import { GtmNoScript } from "src/component/GtmNoScript";
+import { googleTagManagerId } from "src/lib/gtm";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: any) {
@@ -10,6 +14,10 @@ class MyDocument extends Document {
     return (
       <Html lang="ja">
         <Head>
+          <GoogleTagManager
+            googleTagManagerId={googleTagManagerId as GoogleTagManagerId}
+          />
+
           <link
             rel="apple-touch-icon"
             sizes="120x120"
@@ -37,6 +45,7 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#ffffff" />
         </Head>
         <body>
+          <GtmNoScript />
           <Main />
           <NextScript />
         </body>
